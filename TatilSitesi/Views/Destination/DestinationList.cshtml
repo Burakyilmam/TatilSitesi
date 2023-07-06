@@ -1,0 +1,15 @@
+﻿@using TatilSitesi.Models
+@model List<Destination>
+@{
+    ViewData["Title"] = "Güzergahlar";
+    Layout = "~/Views/Shared/LayoutUser.cshtml";
+}
+@foreach (var item in Model)
+{
+    <div class="col-sm-6 col-md-4 col-lg-3">
+        <a href="/Destination/DestinationPage/@item.DestinationId">
+            <img width="250px" height="250px" src="@item.DestinationImageUrl" alt="">
+        </a>
+    </div>
+}
+

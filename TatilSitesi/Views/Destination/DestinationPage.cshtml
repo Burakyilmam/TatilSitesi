@@ -1,0 +1,10 @@
+﻿
+@{
+    ViewData["Title"] = "DestinationPage";
+    Layout = "~/Views/Shared/LayoutUser.cshtml";
+}
+
+@await Component.InvokeAsync("ListComment",new {id=ViewBag.Id})
+<br />
+@await Html.PartialAsync("~/Views/Comment/CommentAdd.cshtml")
+
