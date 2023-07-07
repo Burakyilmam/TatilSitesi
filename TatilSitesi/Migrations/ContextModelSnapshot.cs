@@ -104,7 +104,7 @@ namespace TatilSitesi.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("DestinationId")
+                    b.Property<int>("HotelId")
                         .HasColumnType("int");
 
                     b.Property<int>("UserId")
@@ -112,20 +112,20 @@ namespace TatilSitesi.Migrations
 
                     b.HasKey("CommentId");
 
-                    b.HasIndex("DestinationId");
+                    b.HasIndex("HotelId");
 
                     b.HasIndex("UserId");
 
                     b.ToTable("Comments");
                 });
 
-            modelBuilder.Entity("TatilSitesi.Models.Destination", b =>
+            modelBuilder.Entity("TatilSitesi.Models.Hotel", b =>
                 {
-                    b.Property<int>("DestinationId")
+                    b.Property<int>("HotelId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("DestinationId"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("HotelId"), 1L, 1);
 
                     b.Property<int>("CategoryId")
                         .HasColumnType("int");
@@ -133,56 +133,41 @@ namespace TatilSitesi.Migrations
                     b.Property<int>("CityId")
                         .HasColumnType("int");
 
-                    b.Property<int>("DestinationCapacity")
-                        .HasColumnType("int");
-
-                    b.Property<int>("DestinationDay")
-                        .HasColumnType("int");
-
-                    b.Property<string>("DestinationDescription")
+                    b.Property<string>("HotelAddres")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<double>("DestinationDiscount")
-                        .HasColumnType("float");
-
-                    b.Property<string>("DestinationImageUrl")
+                    b.Property<string>("HotelDescription")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("DestinationName")
+                    b.Property<string>("HotelName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<double>("DestinationPrice")
-                        .HasColumnType("float");
-
-                    b.Property<bool>("DestinationStatu")
+                    b.Property<bool>("HotelStatu")
                         .HasColumnType("bit");
 
-                    b.HasKey("DestinationId");
+                    b.HasKey("HotelId");
 
                     b.HasIndex("CategoryId");
 
                     b.HasIndex("CityId");
 
-                    b.ToTable("Destinations");
+                    b.ToTable("Hotels");
                 });
 
-            modelBuilder.Entity("TatilSitesi.Models.DestinationDetail", b =>
+            modelBuilder.Entity("TatilSitesi.Models.HotelDetail", b =>
                 {
-                    b.Property<int>("DestinationDetailId")
+                    b.Property<int>("HotelDetailId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("DestinationDetailId"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("HotelDetailId"), 1L, 1);
 
                     b.Property<string>("Animation")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<int?>("DestinationId")
-                        .HasColumnType("int");
 
                     b.Property<string>("Disco")
                         .IsRequired()
@@ -192,33 +177,91 @@ namespace TatilSitesi.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("DestinationDetailId");
+                    b.Property<int>("HotelId")
+                        .HasColumnType("int");
 
-                    b.HasIndex("DestinationId");
+                    b.HasKey("HotelDetailId");
 
-                    b.ToTable("DestinationsDetails");
+                    b.HasIndex("HotelId");
+
+                    b.ToTable("HotelDetails");
                 });
 
-            modelBuilder.Entity("TatilSitesi.Models.DestinationImage", b =>
+            modelBuilder.Entity("TatilSitesi.Models.HotelImage", b =>
                 {
-                    b.Property<int>("DestinationImageId")
+                    b.Property<int>("HotelImageId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("DestinationImageId"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("HotelImageId"), 1L, 1);
 
-                    b.Property<int>("DestinationId")
+                    b.Property<int>("HotelId")
                         .HasColumnType("int");
 
-                    b.Property<string>("DestinationImageUrl")
+                    b.Property<bool>("HotelImageStatu")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("HotelImageUrl")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("DestinationImageId");
+                    b.HasKey("HotelImageId");
 
-                    b.HasIndex("DestinationId");
+                    b.HasIndex("HotelId");
 
-                    b.ToTable("DestinationsImages");
+                    b.ToTable("HotelImages");
+                });
+
+            modelBuilder.Entity("TatilSitesi.Models.HotelRoom", b =>
+                {
+                    b.Property<int>("HotelRoomId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("HotelRoomId"), 1L, 1);
+
+                    b.Property<int>("HotelId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("HotelRoomPersonNumber")
+                        .HasColumnType("int");
+
+                    b.Property<double>("HotelRoomPrice")
+                        .HasColumnType("float");
+
+                    b.Property<bool>("HotelRoomStatu")
+                        .HasColumnType("bit");
+
+                    b.HasKey("HotelRoomId");
+
+                    b.HasIndex("HotelId");
+
+                    b.ToTable("HotelRooms");
+                });
+
+            modelBuilder.Entity("TatilSitesi.Models.HotelRoomImage", b =>
+                {
+                    b.Property<int>("HotelRoomImageId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("HotelRoomImageId"), 1L, 1);
+
+                    b.Property<int>("HotelRoomId")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("HotelRoomImageStatu")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("HotelRoomImageUrl")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("HotelRoomImageId");
+
+                    b.HasIndex("HotelRoomId");
+
+                    b.ToTable("HotelRoomsImages");
                 });
 
             modelBuilder.Entity("TatilSitesi.Models.User", b =>
@@ -267,9 +310,9 @@ namespace TatilSitesi.Migrations
 
             modelBuilder.Entity("TatilSitesi.Models.Comment", b =>
                 {
-                    b.HasOne("TatilSitesi.Models.Destination", "Destination")
+                    b.HasOne("TatilSitesi.Models.Hotel", "Hotel")
                         .WithMany("Comments")
-                        .HasForeignKey("DestinationId")
+                        .HasForeignKey("HotelId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -279,21 +322,21 @@ namespace TatilSitesi.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Destination");
+                    b.Navigation("Hotel");
 
                     b.Navigation("User");
                 });
 
-            modelBuilder.Entity("TatilSitesi.Models.Destination", b =>
+            modelBuilder.Entity("TatilSitesi.Models.Hotel", b =>
                 {
                     b.HasOne("TatilSitesi.Models.Category", "Category")
-                        .WithMany("Destination")
+                        .WithMany("Hotels")
                         .HasForeignKey("CategoryId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("TatilSitesi.Models.City", "City")
-                        .WithMany("Destinations")
+                        .WithMany("Hotels")
                         .HasForeignKey("CityId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -303,41 +346,74 @@ namespace TatilSitesi.Migrations
                     b.Navigation("City");
                 });
 
-            modelBuilder.Entity("TatilSitesi.Models.DestinationDetail", b =>
+            modelBuilder.Entity("TatilSitesi.Models.HotelDetail", b =>
                 {
-                    b.HasOne("TatilSitesi.Models.Destination", null)
-                        .WithMany("DestinationDetails")
-                        .HasForeignKey("DestinationId");
-                });
-
-            modelBuilder.Entity("TatilSitesi.Models.DestinationImage", b =>
-                {
-                    b.HasOne("TatilSitesi.Models.Destination", "Destination")
-                        .WithMany("DestinationImages")
-                        .HasForeignKey("DestinationId")
+                    b.HasOne("TatilSitesi.Models.Hotel", "Hotel")
+                        .WithMany("HotelDetails")
+                        .HasForeignKey("HotelId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Destination");
+                    b.Navigation("Hotel");
+                });
+
+            modelBuilder.Entity("TatilSitesi.Models.HotelImage", b =>
+                {
+                    b.HasOne("TatilSitesi.Models.Hotel", "Hotel")
+                        .WithMany("HotelImages")
+                        .HasForeignKey("HotelId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Hotel");
+                });
+
+            modelBuilder.Entity("TatilSitesi.Models.HotelRoom", b =>
+                {
+                    b.HasOne("TatilSitesi.Models.Hotel", "Hotel")
+                        .WithMany("HotelRooms")
+                        .HasForeignKey("HotelId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Hotel");
+                });
+
+            modelBuilder.Entity("TatilSitesi.Models.HotelRoomImage", b =>
+                {
+                    b.HasOne("TatilSitesi.Models.HotelRoom", "HotelRoom")
+                        .WithMany("hotelRoomImages")
+                        .HasForeignKey("HotelRoomId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("HotelRoom");
                 });
 
             modelBuilder.Entity("TatilSitesi.Models.Category", b =>
                 {
-                    b.Navigation("Destination");
+                    b.Navigation("Hotels");
                 });
 
             modelBuilder.Entity("TatilSitesi.Models.City", b =>
                 {
-                    b.Navigation("Destinations");
+                    b.Navigation("Hotels");
                 });
 
-            modelBuilder.Entity("TatilSitesi.Models.Destination", b =>
+            modelBuilder.Entity("TatilSitesi.Models.Hotel", b =>
                 {
                     b.Navigation("Comments");
 
-                    b.Navigation("DestinationDetails");
+                    b.Navigation("HotelDetails");
 
-                    b.Navigation("DestinationImages");
+                    b.Navigation("HotelImages");
+
+                    b.Navigation("HotelRooms");
+                });
+
+            modelBuilder.Entity("TatilSitesi.Models.HotelRoom", b =>
+                {
+                    b.Navigation("hotelRoomImages");
                 });
 
             modelBuilder.Entity("TatilSitesi.Models.User", b =>

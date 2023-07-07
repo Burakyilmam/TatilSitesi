@@ -8,6 +8,6 @@ namespace TatilSitesi.Models
         public int CategoryId { get; set; }
         public string CategoryName { get; set; }
         public bool CategoryStatu { get; set; }
-        public List<Destination> Destination { get; set; }
+        public List<Hotel> Hotels { get; set; }
     }
 }

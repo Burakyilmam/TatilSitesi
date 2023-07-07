@@ -12,7 +12,7 @@ namespace TatilSitesi.Controllers
         public IActionResult CommentList()
         {
             {
-                return View(cr.List("Destination", "User").Where(x => x.CommentDate <= DateTime.Now).OrderBy(x => x.DestinationId));
+                return View(cr.List("Hotel", "User").Where(x => x.CommentDate <= DateTime.Now).OrderBy(x => x.HotelId));
             }
         }
         [HttpGet]
@@ -32,7 +32,7 @@ namespace TatilSitesi.Controllers
                 c.UserId = userId;
             }
             cr.Add(c);
-            return RedirectToAction("DestinationPage", "Destination", new { @id = c.DestinationId });
+            return RedirectToAction("HotelPage", "Hotel", new { @id = c.HotelId });
 
         }
     }

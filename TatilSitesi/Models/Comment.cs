@@ -11,7 +11,7 @@ namespace TatilSitesi.Models
         public bool CommentStatu { get; set; }
         public int UserId { get; set; }
         public User User { get; set; }
-        public int DestinationId { get; set; }
-        public Destination Destination { get; set; }
+        public int HotelId { get; set; }
+        public Hotel Hotel { get; set; }
     }
 }

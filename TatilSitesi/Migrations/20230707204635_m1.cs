@@ -58,13 +58,13 @@ namespace TatilSitesi.Migrations
                 {
                     UserId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    UserRealName = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    UserSurname = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    UserGender = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    UserRealName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    UserSurname = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    UserGender = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     UserName = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     UserPassword = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    UserEmail = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    UserPhoneNumber = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    UserEmail = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    UserPhoneNumber = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     UserStatu = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
@@ -73,32 +73,29 @@ namespace TatilSitesi.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Destinations",
+                name: "Hotels",
                 columns: table => new
                 {
-                    DestinationId = table.Column<int>(type: "int", nullable: false)
+                    HotelId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    DestinationName = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    DestinationDescription = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    DestinationCapacity = table.Column<int>(type: "int", nullable: false),
-                    DestinationDay = table.Column<int>(type: "int", nullable: false),
-                    DestinationPrice = table.Column<double>(type: "float", nullable: false),
-                    DestinationDiscount = table.Column<double>(type: "float", nullable: false),
-                    DestinationStatu = table.Column<bool>(type: "bit", nullable: false),
+                    HotelName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    HotelAddres = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    HotelDescription = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    HotelStatu = table.Column<bool>(type: "bit", nullable: false),
                     CityId = table.Column<int>(type: "int", nullable: false),
                     CategoryId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Destinations", x => x.DestinationId);
+                    table.PrimaryKey("PK_Hotels", x => x.HotelId);
                     table.ForeignKey(
-                        name: "FK_Destinations_Categories_CategoryId",
+                        name: "FK_Hotels_Categories_CategoryId",
                         column: x => x.CategoryId,
                         principalTable: "Categories",
                         principalColumn: "CategoryId",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Destinations_Cities_CityId",
+                        name: "FK_Hotels_Cities_CityId",
                         column: x => x.CityId,
                         principalTable: "Cities",
                         principalColumn: "CityId",
@@ -115,16 +112,16 @@ namespace TatilSitesi.Migrations
                     CommentDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     CommentStatu = table.Column<bool>(type: "bit", nullable: false),
                     UserId = table.Column<int>(type: "int", nullable: false),
-                    DestinationId = table.Column<int>(type: "int", nullable: false)
+                    HotelId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Comments", x => x.CommentId);
                     table.ForeignKey(
-                        name: "FK_Comments_Destinations_DestinationId",
-                        column: x => x.DestinationId,
-                        principalTable: "Destinations",
-                        principalColumn: "DestinationId",
+                        name: "FK_Comments_Hotels_HotelId",
+                        column: x => x.HotelId,
+                        principalTable: "Hotels",
+                        principalColumn: "HotelId",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_Comments_Users_UserId",
@@ -135,50 +132,95 @@ namespace TatilSitesi.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "DestinationsDetails",
+                name: "HotelDetails",
                 columns: table => new
                 {
-                    DestinationDetailId = table.Column<int>(type: "int", nullable: false)
+                    HotelDetailId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Animation = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     GameRoom = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Disco = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    DestinationId = table.Column<int>(type: "int", nullable: true)
+                    HotelId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_DestinationsDetails", x => x.DestinationDetailId);
+                    table.PrimaryKey("PK_HotelDetails", x => x.HotelDetailId);
                     table.ForeignKey(
-                        name: "FK_DestinationsDetails_Destinations_DestinationId",
-                        column: x => x.DestinationId,
-                        principalTable: "Destinations",
-                        principalColumn: "DestinationId");
+                        name: "FK_HotelDetails_Hotels_HotelId",
+                        column: x => x.HotelId,
+                        principalTable: "Hotels",
+                        principalColumn: "HotelId",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
-                name: "DestinationsImages",
+                name: "HotelImages",
                 columns: table => new
                 {
-                    DestinationImageId = table.Column<int>(type: "int", nullable: false)
+                    HotelImageId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    DestinationImageUrl = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    DestinationId = table.Column<int>(type: "int", nullable: false)
+                    HotelImageUrl = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    HotelImageStatu = table.Column<bool>(type: "bit", nullable: false),
+                    HotelId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_DestinationsImages", x => x.DestinationImageId);
+                    table.PrimaryKey("PK_HotelImages", x => x.HotelImageId);
                     table.ForeignKey(
-                        name: "FK_DestinationsImages_Destinations_DestinationId",
-                        column: x => x.DestinationId,
-                        principalTable: "Destinations",
-                        principalColumn: "DestinationId",
+                        name: "FK_HotelImages_Hotels_HotelId",
+                        column: x => x.HotelId,
+                        principalTable: "Hotels",
+                        principalColumn: "HotelId",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "HotelRooms",
+                columns: table => new
+                {
+                    HotelRoomId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    HotelRoomPrice = table.Column<double>(type: "float", nullable: false),
+                    HotelRoomPersonNumber = table.Column<int>(type: "int", nullable: false),
+                    HotelRoomStatu = table.Column<bool>(type: "bit", nullable: false),
+                    HotelId = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_HotelRooms", x => x.HotelRoomId);
+                    table.ForeignKey(
+                        name: "FK_HotelRooms_Hotels_HotelId",
+                        column: x => x.HotelId,
+                        principalTable: "Hotels",
+                        principalColumn: "HotelId",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "HotelRoomsImages",
+                columns: table => new
+                {
+                    HotelRoomImageId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    HotelRoomImageUrl = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    HotelRoomImageStatu = table.Column<bool>(type: "bit", nullable: false),
+                    HotelRoomId = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_HotelRoomsImages", x => x.HotelRoomImageId);
+                    table.ForeignKey(
+                        name: "FK_HotelRoomsImages_HotelRooms_HotelRoomId",
+                        column: x => x.HotelRoomId,
+                        principalTable: "HotelRooms",
+                        principalColumn: "HotelRoomId",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Comments_DestinationId",
+                name: "IX_Comments_HotelId",
                 table: "Comments",
-                column: "DestinationId");
+                column: "HotelId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Comments_UserId",
@@ -186,24 +228,34 @@ namespace TatilSitesi.Migrations
                 column: "UserId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Destinations_CategoryId",
-                table: "Destinations",
+                name: "IX_HotelDetails_HotelId",
+                table: "HotelDetails",
+                column: "HotelId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_HotelImages_HotelId",
+                table: "HotelImages",
+                column: "HotelId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_HotelRooms_HotelId",
+                table: "HotelRooms",
+                column: "HotelId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_HotelRoomsImages_HotelRoomId",
+                table: "HotelRoomsImages",
+                column: "HotelRoomId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Hotels_CategoryId",
+                table: "Hotels",
                 column: "CategoryId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Destinations_CityId",
-                table: "Destinations",
+                name: "IX_Hotels_CityId",
+                table: "Hotels",
                 column: "CityId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_DestinationsDetails_DestinationId",
-                table: "DestinationsDetails",
-                column: "DestinationId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_DestinationsImages_DestinationId",
-                table: "DestinationsImages",
-                column: "DestinationId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -215,16 +267,22 @@ namespace TatilSitesi.Migrations
                 name: "Comments");
 
             migrationBuilder.DropTable(
-                name: "DestinationsDetails");
+                name: "HotelDetails");
 
             migrationBuilder.DropTable(
-                name: "DestinationsImages");
+                name: "HotelImages");
+
+            migrationBuilder.DropTable(
+                name: "HotelRoomsImages");
 
             migrationBuilder.DropTable(
                 name: "Users");
 
             migrationBuilder.DropTable(
-                name: "Destinations");
+                name: "HotelRooms");
+
+            migrationBuilder.DropTable(
+                name: "Hotels");
 
             migrationBuilder.DropTable(
                 name: "Categories");

@@ -8,7 +8,7 @@ namespace TatilSitesi.Models
         public int CityId { get; set; }
         public string CityName { get; set; }
         public bool CityStatu { get; set; }
-        public List<Destination> Destinations { get; set; }
+        public List<Hotel> Hotels { get; set; }
 
     }
 }

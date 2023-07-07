@@ -19,6 +19,18 @@ namespace TatilSitesi.Repository
         {
             return c.Set<T>().Include(u).Include(d).ToList();
         }
+        public List<T> List(string u, string d,string h)
+        {
+            return c.Set<T>().Include(u).Include(d).Include(h).ToList();
+        }
+        public List<T> List(string u, string d, string h,string b)
+        {
+            return c.Set<T>().Include(u).Include(d).Include(h).Include(b).ToList();
+        }
+        public List<T> List(string u, string d, string h, string b,string k)
+        {
+            return c.Set<T>().Include(u).Include(d).Include(h).Include(b).Include(b).ToList();
+        }
         public void Add(T item)
         {
             c.Add(item);

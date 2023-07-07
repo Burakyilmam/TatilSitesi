@@ -8,7 +8,7 @@ namespace TatilSitesi.ViewComponents
         public IViewComponentResult Invoke(int id)
         {
             CommentRepository cr = new CommentRepository();
-            var commentlist = cr.List("User").Where(x => (x.DestinationId == id) && (x.CommentStatu == true));
+            var commentlist = cr.List("User").Where(x => (x.HotelId == id) && (x.CommentStatu == true));
             return View(commentlist);
         }
     }

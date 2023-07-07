@@ -2,7 +2,7 @@
 
 namespace TatilSitesi.Repository
 {
-    public class DestinationRepository : GenericRepository<Destination>
+    public class HotelRoomRepository : GenericRepository<HotelRoom>
     {
     }
 }

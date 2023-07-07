@@ -1,0 +1,19 @@
+﻿@using TatilSitesi.Models
+@model IEnumerable<HotelRoom>
+
+    @foreach (var item in Model)
+    {
+        <div class="container">
+            <div style="background-color:#cac6c694;border:1px solid black;border-radius:5px;" class="row mt-2 mb-2">
+                <div style="text-align:start;" class="col-6 mt-2">
+                    @item.HotelRoomId
+                </div>
+                <div style="text-align:end;" class="col-6 mt-2">
+                    @item.HotelRoomPrice
+                </div>
+            <div class="col-12 mt-2 mb-2">
+            @await Component.InvokeAsync("ListRoomImage",item.HotelRoomId)
+            </div>
+            </div>
+        </div>
+    }
