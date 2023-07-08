@@ -9,10 +9,10 @@ namespace TatilSitesi.Controllers
     public class HotelController : Controller
     {
         HotelRepository hr = new HotelRepository();
-        public IActionResult HotelPage(int id, string u)
+        public IActionResult HotelPage(int id)
         {
             ViewBag.Id = id;
-            return View(hr.List().Where(x => x.HotelId == id));
+            return View(hr.List("Category","City").Where(x => x.HotelId == id));
         }
     }
 }

@@ -1,0 +1,8 @@
+﻿@using TatilSitesi.Models
+@model IEnumerable<Hotel>
+
+@foreach (var item in Model)
+{
+    @item.HotelId
+    @item.CategoryId
+}

@@ -1,0 +1,9 @@
+﻿@using TatilSitesi.Models
+@model IEnumerable<HotelImage>
+
+@foreach(var item in Model)
+{
+    <div class="container-fluid">
+        <img class="w-100" src="@item.HotelImageUrl">
+    </div>
+}

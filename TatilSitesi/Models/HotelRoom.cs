@@ -6,6 +6,7 @@ namespace TatilSitesi.Models
     {
         [Key] 
         public int HotelRoomId { get; set; }
+        public string HotelRoomName { get; set; }
         public double HotelRoomPrice { get; set; }
         public int HotelRoomPersonNumber { get; set; }
         public bool HotelRoomStatu { get; set; }
