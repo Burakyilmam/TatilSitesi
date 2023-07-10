@@ -1,0 +1,6 @@
+﻿@using TatilSitesi.Models
+@model IEnumerable<HotelRoom>
+
+    @foreach(var item in Model){
+    <div class="col-12 text-center mb-3"><b>@item.HotelRoomPrice</b>  ₺'den itibaren</div>
+    }

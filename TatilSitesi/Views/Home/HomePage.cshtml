@@ -3,6 +3,9 @@
     ViewData["Title"] = "HomePage";
     Layout = "~/Views/Shared/LayoutUser.cshtml";
 }
-@* 
-@await Component.InvokeAsync("ListSummerDestination") *@
+<h1 class="text-center">Yaz Fırsatları</h1>
+@await Component.InvokeAsync("ListSummerHotels");
+<br />
+<h1 class="text-center">Avrupa Rotası</h1>
+@await Component.InvokeAsync("ListEuropeHotels");
 

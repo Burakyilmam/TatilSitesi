@@ -11,7 +11,7 @@ namespace TatilSitesi.Controllers
     {
         UserRepository ur = new UserRepository();
         Context c = new Context();
-        public IActionResult UserPage()
+        public IActionResult UserPage(User u)
         {
             var adminIdClaim = HttpContext.User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier)?.Value;
             if (!string.IsNullOrEmpty(adminIdClaim))
@@ -25,6 +25,7 @@ namespace TatilSitesi.Controllers
                     ViewBag.Name = username;
                     ViewBag.Id = userId;
                     return View();
+
                 }
             }
             return RedirectToAction("UserLogin", "User");
@@ -50,14 +51,14 @@ namespace TatilSitesi.Controllers
                 var useridentity = new ClaimsIdentity(claims, "a");
                 ClaimsPrincipal pr = new ClaimsPrincipal(useridentity);
                 await HttpContext.SignInAsync(pr);
-                return RedirectToAction("UserPage", "User");
+                return RedirectToAction("HomePage", "Home");
             }
             return View();
         }
         public async Task<IActionResult> UserLogoutAsync()
         {
             await HttpContext.SignOutAsync();
-            return RedirectToAction("UserLogin", "User");
+            return RedirectToAction("HomePageNoComment", "Home");
         }
         [AllowAnonymous]
         [HttpGet]
@@ -70,6 +71,11 @@ namespace TatilSitesi.Controllers
         public IActionResult UserRegister(User u)
         {
             u.UserStatu = true;
+            u.UserEmail = "";
+            u.UserGender = "";
+            u.UserSurname = "";
+            u.UserRealName = "";
+            u.UserPhoneNumber = "";
             ur.Add(u);
             return RedirectToAction("UserLogin", "User");
         }

@@ -8,8 +8,7 @@
         padding: 10px;
     }
 </style>
-<h1 class="text-center">Benzer Kategorideki Oteller</h1>
-<div class="carousel" data-flickity='{ "draggable": true, "pageDots": false}'>
+<div class="carousel"  data-flickity='{ "draggable": true, "pageDots": false}'>
     @foreach (var item in Model)
     {
         <div style="border:1px solid black;margin:10px;border-radius:10px;" class="Category carousel-cell">
@@ -21,7 +20,7 @@
                     @item.HotelName
                 </div>
                 <div class="col-6">
-                    <a style="text-decoration:none;outline:none;color:black" href="">
+                    <a style="text-decoration:none;outline:none;color:black"  href="">
                         <b>@item.City.CityName</b>
                     </a>
                 </div>

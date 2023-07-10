@@ -13,7 +13,7 @@
     @foreach (var item in Model)
     {
         <div style="border:1px solid black;margin:10px;border-radius:10px;" class="Category carousel-cell">
-            <a href="/Hotel/HotelPage/@item.HotelId">
+            <a href="/Hotel/HotelPageNoComment/@item.HotelId">
                 <img src="@item.HotelThumbnailImageUrl" height="200" width="300" style="border-radius:10px;padding:10px;" />
             </a>
             <div class="col-12" style="display:flex;flex-wrap:wrap">
@@ -33,7 +33,7 @@
             </div>
             @await Component.InvokeAsync("ListHotelMinPrice",new {id = item.HotelId})
             <div class="col-12 mb-3 mt-3 text-center">
-                <a class="btn-primary" style="padding:10px;text-decoration:none;outline:none;" href="/Hotel/HotelPage/@item.HotelId">
+                <a class="btn-primary" style="padding:10px;text-decoration:none;outline:none;" href="/Hotel/HotelPageNoComment/@item.HotelId">
                     Oteli İncele
                 </a>
             </div>

@@ -1,0 +1,10 @@
+﻿@{
+    ViewData["Title"] = "Ana Sayfa";
+    Layout = "~/Views/Shared/LayoutUser.cshtml";
+}
+<h1 class="text-center">Yaz Fırsatları</h1>
+@await Component.InvokeAsync("ListSummerHotelsNoComment");
+<br />
+<h1 class="text-center">Avrupa Rotası</h1>
+@await Component.InvokeAsync("ListEuropeHotelsNoComment");
+

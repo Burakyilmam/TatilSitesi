@@ -1,0 +1,27 @@
+﻿﻿@using X.PagedList
+@using X.PagedList.Mvc.Bootstrap4.Core;
+@using X.PagedList.Mvc.Core
+@using TatilSitesi.Models
+@model IPagedList<Hotel>
+@{
+    ViewData["Title"] = "HotelListNoComment";
+    Layout = "~/Views/Shared/LayoutUser.cshtml";
+}
+@foreach(var item in Model)
+{
+    <div class="container-fluid bg-dark" style="display:flex">
+        <div class="row">
+            <div class="col bg-dark">
+                <a href="">
+                    <img width="350" height="250" src="@item.HotelThumbnailImageUrl">
+                </a>
+            </div>
+            <div class="col- bg-danger text-center">
+                @item.HotelName
+            </div>
+        </div>
+   </div> 
+}
+<div class="col-12">
+    @Html.PagedListPager((IPagedList)Model,page=>Url.Action("HotelListNoComment",new {page}),Bootstrap4PagedListRenderOptions.ClassicPlusFirstAndLast)
+</div>

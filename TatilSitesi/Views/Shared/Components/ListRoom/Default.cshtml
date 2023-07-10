@@ -4,18 +4,18 @@
     @foreach (var item in Model)
     {
         <div class="container">
-            <div style="background-color:#cac6c694;border:1px solid black;border-radius:5px;" class="row mt-2 mb-2">
-                <div style="text-align:start;" class="col-6 mt-2 mb-2">
-                    @item.HotelRoomName
+            <div style="background-color:#cac6c694;border:1px solid black;border-radius:5px;" class="row">
+                <div style="text-align:start;padding-left:40px;" class="col-6 mt-3">
+                <h4>@item.HotelRoomName</h4>
                 </div>
-                <div style="text-align:end;" class="col-6 mt-2 mb-2">
-                    @item.HotelRoomPrice
+            <div style="text-align:end;padding-right:40px;" class="col-6 mt-3">
+                <h4>@item.HotelRoomPrice ₺</h4>
                 </div>
-            <div class="col-6 mt-2 mb-2">
+            <div class="col-12">
             @await Component.InvokeAsync("ListRoomImage",item.HotelRoomId)
             </div>
-            <div class="col-6 mt-2 mb-2text-center">
-                <a href="/Randevu">Satın Al</a>
+            <div class="col-12 mb-4" style="text-align:end;padding-right:40px;">
+                <a class="btn-primary" style="padding:10px 45px;text-decoration:none" href="/Randevu">Satın Al</a>
             </div>
             </div>
         </div>

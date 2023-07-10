@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using System.Security.Claims;
 using TatilSitesi.Models;
@@ -6,9 +7,11 @@ using TatilSitesi.Repository;
 
 namespace TatilSitesi.Controllers
 {
+    [Authorize]
     public class CommentController : Controller
     {
         CommentRepository cr = new CommentRepository();
+        [AllowAnonymous]
         public IActionResult CommentList()
         {
             {

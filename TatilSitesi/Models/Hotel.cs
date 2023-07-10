@@ -9,6 +9,7 @@ namespace TatilSitesi.Models
         public string HotelName { get; set; }
         public string HotelAddres { get; set; }
         public string HotelDescription { get; set; }
+        public string HotelThumbnailImageUrl { get; set; }
         public bool HotelStatu { get; set; }
         public List<HotelRoom> HotelRooms { get; set; }
         public List<HotelDetail> HotelDetails { get; set; }

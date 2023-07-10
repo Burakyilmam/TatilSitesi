@@ -3,7 +3,7 @@ using TatilSitesi.Repository;
 
 namespace TatilSitesi.ViewComponents
 {
-    public class ListSimilarCityHotel : ViewComponent
+    public class ListSimilarCityHotelNoComment : ViewComponent
     {
         public IViewComponentResult Invoke(int id)
         {

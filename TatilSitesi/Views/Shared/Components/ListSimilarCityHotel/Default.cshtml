@@ -1,7 +1,44 @@
 ﻿@using TatilSitesi.Models
 @model IEnumerable<Hotel>
 
-@foreach(var item in Model){
-    @item.HotelId
-    @item.CityId
-}
+<link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
+<style>
+    .Category .carousel-cell {
+        width: 50%;
+        padding: 10px;
+    }
+</style>
+<h1 class="text-center">Şehirde Bulunan Diğer Oteller</h1>
+<div class="carousel" data-flickity='{ "draggable": true, "pageDots": false}'>
+    @foreach (var item in Model)
+    {
+        <div style="border:1px solid black;margin:10px;border-radius:10px;" class="Category carousel-cell">
+            <a href="/Hotel/HotelPage/@item.HotelId">
+                <img src="@item.HotelThumbnailImageUrl" height="200" width="300" style="border-radius:10px;padding:10px;" />
+            </a>
+            <div class="col-12" style="display:flex;flex-wrap:wrap">
+                <div class="col-12 text-center">
+                    @item.HotelName
+                </div>
+                <div class="col-6">
+                    <a style="text-decoration:none;outline:none;color:black" href="">
+                        <b>@item.City.CityName</b>
+                    </a>
+                </div>
+                <div style="display:Flex" class="col-6 justify-content-end">
+                    <a href="" style="text-decoration:none;outline:none;color:black">
+                        <b>@item.Category.CategoryName</b>
+                    </a>
+                </div>
+            </div>
+            @await Component.InvokeAsync("ListHotelMinPrice",new {id = item.HotelId})
+            <div class="col-12 mb-3 mt-3 text-center">
+                <a class="btn-primary" style="padding:10px;text-decoration:none;outline:none;" href="/Hotel/HotelPage/@item.HotelId">
+                    Oteli İncele
+                </a>
+            </div>
+        </div>
+    }
+</div>
+
+<script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>

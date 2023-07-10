@@ -1,9 +1,13 @@
 ﻿@using TatilSitesi.Models
 @model IEnumerable<HotelImage>
+<link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
 
-@foreach(var item in Model)
-{
-    <div class="container-fluid">
-        <img class="w-100" src="@item.HotelImageUrl">
-    </div>
-}
+<div class="carousel" data-flickity='{ "draggable": true,"autoPlay" : 2500 , "pageDots": false , "pauseAutoPlayOnHover" : false }'>
+    @foreach(var item in Model)
+    {
+        <div class="carousel-cell" style="width:100%">
+            <img src="@item.HotelImageUrl" height="600px" width="100%" style="border-radius:10px;" />
+        </div>
+    }
+</div>
+<script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
