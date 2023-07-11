@@ -4,26 +4,77 @@
     ViewData["Title"] = "HotelPage";
     Layout = "~/Views/Shared/LayoutUser.cshtml";
 }
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+    .checked {
+        color: orange;
+    }
+</style>
 <div class="container-fluid">
 
     @foreach (var item in Model)
     {
-        <div class="col-12" style="display:flex;background-color:#cac6c694;border-radius:5px">
+        <div class="col-12 pt-1" style="display:flex;background-color:#cac6c694;border-radius:5px">
             <div class="col-6 mt-2">
-                <a href="" style="text-decoration:none;color:black;font-weight:bolder"> Ana Sayfa &nbsp; </a> <span class="opacity-25"> / </span><a href="" style="text-decoration:none;color:black;font-weight:bolder">&nbsp; @item.City.CityName</a>
+                <a href="/Home/HomePage" style="text-decoration:none;color:black;font-weight:bolder"> Ana Sayfa &nbsp; </a> <span class="opacity-25"> / </span><a href="/Hotel/HotelCityListNoComment/@item.CityId" style="text-decoration:none;color:black;font-weight:bolder">&nbsp; @item.City.CityName</a>
             </div>
             <div style="display:flex" class="col-6 justify-content-end mt-2">
-                <a href="" style="text-decoration:none;color:black;font-weight:bolder"> Ana Sayfa &nbsp; </a> <span class="opacity-25"> /  </span><a href="" style="text-decoration:none;color:black;font-weight:bolder">&nbsp; @item.Category.CategoryName</a>
+                <a href="/Home/HomePage" style="text-decoration:none;color:black;font-weight:bolder"> Ana Sayfa &nbsp; </a> <span class="opacity-25"> /  </span><a href="/Hotel/HotelCategoryListNoComment/@item.CategoryId" style="text-decoration:none;color:black;font-weight:bolder">&nbsp; @item.Category.CategoryName</a>
             </div>
         </div>
         <div style="display:flex;background-color:#cac6c694;" class="col-12">
-            <div class="col-12 justify-content-start">
-                <h2>@item.HotelName</h2>
+            <div class="col-12 pt-2 justify-content-start">
+                <span class="mr-2" style="font-size:30px;font-weight:bold">@item.HotelName</span>
+                @if (item.HotelStar == 5)
+                {
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                }
+                @if (item.HotelStar == 4)
+                {
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star"></span>
+                }
+                @if (item.HotelStar == 3)
+                {
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star"></span>
+                    <span class="fa fa-star"></span>
+                }
+                @if (item.HotelStar == 2)
+                {
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star"></span>
+                    <span class="fa fa-star"></span>
+                    <span class="fa fa-star"></span>
+                }
+                @if (item.HotelStar == 1)
+                {
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star"></span>
+                    <span class="fa fa-star"></span>
+                    <span class="fa fa-star"></span>
+                    <span class="fa fa-star"></span>
+                }
             </div>
         </div>
         <div class="col-12 mb-4" style="display:flex;background-color:#cac6c694;">
-            <div class="col-12 mb-3 justify-content-start">
+            <div class="col-6 mb-3 pt-3 justify-content-start">
                 <h6>@item.HotelAddres</h6>
+            </div>
+            <div style="display:flex" class="col-6 mb-3 justify-content-end">
+                <a class="btn-primary text-center text-white" style="padding:10px 20px;border-radius:50%;">
+                    @item.HotelRating
+                </a>
             </div>
         </div>
 @await Component.InvokeAsync("ListHotelImage",new {id = ViewBag.Id})

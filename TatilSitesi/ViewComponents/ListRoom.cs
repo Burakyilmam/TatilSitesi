@@ -9,7 +9,7 @@ namespace TatilSitesi.ViewComponents
         public IViewComponentResult Invoke(int id)
         {
             HotelRoomRepository hr = new HotelRoomRepository();
-            var hotelroomlist = hr.List().Where(x => (x.HotelId == id) && (x.HotelRoomStatu == true));
+            var hotelroomlist = hr.List().Where(x => (x.HotelId == id) && (x.HotelRoomStatu == true)).OrderBy(x=>x.HotelRoomPrice);
             return View(hotelroomlist);
         }
     }

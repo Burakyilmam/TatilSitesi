@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using TatilSitesi.Models;
 
@@ -11,9 +12,10 @@ using TatilSitesi.Models;
 namespace TatilSitesi.Migrations
 {
     [DbContext(typeof(Context))]
-    partial class ContextModelSnapshot : ModelSnapshot
+    [Migration("20230711121528_1234")]
+    partial class _1234
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -147,12 +149,6 @@ namespace TatilSitesi.Migrations
                     b.Property<string>("HotelName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("HotelRating")
-                        .HasColumnType("int");
-
-                    b.Property<int>("HotelStar")
-                        .HasColumnType("int");
 
                     b.Property<bool>("HotelStatu")
                         .HasColumnType("bit");

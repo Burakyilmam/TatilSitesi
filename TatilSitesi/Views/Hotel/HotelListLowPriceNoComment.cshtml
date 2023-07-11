@@ -97,11 +97,6 @@
                     @item.HotelRating
                 </a>
             </div>
-@*             <div style="display:flex" class="col-6 justify-content-end">
-                <a class="btn-info text-center text-white " style="padding:5px 30px">
-                    <i class="fa fa-eye"> @item.HotelCount</i>
-                </a>
-            </div> *@
             <div class="col-12 text-center pt-4 pb-4">
                 <a class="btn-dark" style="padding:10px 20px;text-decoration:none;" href="/Hotel/HotelPageNoComment/@item.HotelId">
                     Oteli İncele
@@ -111,5 +106,5 @@
     </div>
 }
 <div style="display:flex" class="col-12 justify-content-center">
-    @Html.PagedListPager((IPagedList)Model,page=>Url.Action("HotelListNoComment",new {page}),Bootstrap4PagedListRenderOptions.ClassicPlusFirstAndLast)
+    @Html.PagedListPager((IPagedList)Model,page=>Url.Action("HotelListLowPriceNoComment",new {page}),Bootstrap4PagedListRenderOptions.ClassicPlusFirstAndLast)
 </div>

@@ -1,31 +1,79 @@
 ﻿@using TatilSitesi.Models
 @model IEnumerable<Hotel>
-
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
 <style>
     .Category .carousel-cell {
         width: 50%;
         padding: 10px;
     }
+
+    .checked {
+        color: orange;
+    }
 </style>
-<div class="carousel"  data-flickity='{ "draggable": true, "pageDots": false}'>
+<div class="carousel" data-flickity='{ "draggable": true, "pageDots": false}'>
     @foreach (var item in Model)
     {
-        <div style="border:1px solid black;margin:10px;border-radius:10px;" class="Category carousel-cell">
-            <a href="/Hotel/HotelPage/@item.HotelId">
-                <img src="@item.HotelThumbnailImageUrl" height="200" width="300" style="border-radius:10px;padding:10px;" />
-            </a>
+        <div style="border:1px solid black;margin:10px;border-radius:10px;width:20%" class="Category carousel-cell">
+            <div class="col-12">
+                <a href="/Hotel/HotelPage/@item.HotelId">
+                    <img src="@item.HotelThumbnailImageUrl" height="200" width="100%" style="border-radius:10px;padding:10px;" />
+                </a>
+            </div>
             <div class="col-12" style="display:flex;flex-wrap:wrap">
                 <div class="col-12 text-center">
                     @item.HotelName
                 </div>
+                <div class="col-12 text-center">
+                    @if (item.HotelStar == 5)
+                    {
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                    }
+                    @if (item.HotelStar == 4)
+                    {
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star"></span>
+                    }
+                    @if (item.HotelStar == 3)
+                    {
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star"></span>
+                        <span class="fa fa-star"></span>
+                    }
+                    @if (item.HotelStar == 2)
+                    {
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star"></span>
+                        <span class="fa fa-star"></span>
+                        <span class="fa fa-star"></span>
+                    }
+                    @if (item.HotelStar == 1)
+                    {
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star"></span>
+                        <span class="fa fa-star"></span>
+                        <span class="fa fa-star"></span>
+                        <span class="fa fa-star"></span>
+                    }
+                </div>
                 <div class="col-6">
-                    <a style="text-decoration:none;outline:none;color:black"  href="">
+                    <a style="text-decoration:none;outline:none;color:black" href="/Hotel/HotelCityListNoComment/@item.CityId">
                         <b>@item.City.CityName</b>
                     </a>
                 </div>
                 <div style="display:Flex" class="col-6 justify-content-end">
-                    <a href="" style="text-decoration:none;outline:none;color:black">
+                    <a href="/Hotel/HotelCategoryListNoComment/@item.CategoryId" style="text-decoration:none;outline:none;color:black">
                         <b>@item.Category.CategoryName</b>
                     </a>
                 </div>
@@ -40,4 +88,4 @@
     }
 </div>
 
-<script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
+<script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script> 

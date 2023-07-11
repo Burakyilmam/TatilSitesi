@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Authentication.Cookies;
+using TatilSitesi.Repository;
 
 namespace TatilSitesi
 {
@@ -16,7 +17,6 @@ namespace TatilSitesi
                 {
                     x.LoginPath = "/User/UserLogin/";
                 });
-
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
