@@ -1,6 +1,8 @@
-﻿namespace TatilSitesi.Repository
+﻿using TatilSitesi.Models;
+
+namespace TatilSitesi.Repository
 {
-    public class CityRepository
+    public class CityRepository : GenericRepository<City>
     {
     }
 }

@@ -1,0 +1,44 @@
+﻿﻿@using TatilSitesi.Models
+@model TatilSitesi.Models.Comment
+@{
+    ViewData["Title"] = "GetComment";
+    Layout = "~/Views/Shared/LayoutAdmin.cshtml";
+}
+
+<div class="container-fluid">
+    <h2 class="text-center mt-3 mb-3">Kategori Ekleme Paneli</h2>
+    @using (Html.BeginForm("CommentUpdate", "Comment", FormMethod.Post))
+    {
+        @Html.TextBoxFor(x=>x.CommentId,new {@style="display:none;"})
+        <center class="mb-2">
+            @Html.TextBoxFor(x=>x.CommentText,new {style="border-radius: 5px;padding: 4px 10px;width:50%"})
+        </center>
+        <center class="mb-2">
+            @Html.TextBoxFor(x=>x.CommentDate,new {style="border-radius: 5px;padding: 4px 10px;width:50%"})
+        </center>
+        <center class="mb-2">
+            @Html.DropDownList("CommentStatu", new List<SelectListItem>
+        {
+        new SelectListItem { Value = "True", Text = "Aktif" },
+        new SelectListItem { Value = "False", Text = "Pasif" }
+        }, "-- Seçiniz --", new {style="border-radius: 5px;padding: 4px 10px;width:50%"})
+        </center>
+        <center class="mb-2">
+            @Html.DropDownListFor(x=>x.HotelId, ((IEnumerable<SelectListItem>)ViewBag.Hotels).Select(c => new SelectListItem
+        {
+        Value = c.Value,
+        Text = $"{c.Value} - {c.Text}"
+        }),new {style="border-radius: 5px;padding: 4px 10px;width:50%"})
+        </center>
+        <center class="mb-2">
+            @Html.DropDownListFor(model => model.UserId, ((IEnumerable<SelectListItem>)ViewBag.Users).Select(c => new SelectListItem
+        {
+        Value = c.Value,
+        Text = $"{c.Value} - {c.Text}"
+        }),new {style="border-radius: 5px;padding: 4px 10px;width:50%"})
+        </center>
+        <center class=>
+            <button style="padding: 4px 10px;" class="btn-success text-center"><i class="fa fa-plus"></i></button>
+        </center>
+    }
+</div>

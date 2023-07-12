@@ -1,12 +1,14 @@
-﻿using Microsoft.AspNetCore.Authentication;
+﻿    using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
 using TatilSitesi.Models;
 using TatilSitesi.Repository;
+using X.PagedList;
 
 namespace TatilSitesi.Controllers
 {
+    [Authorize]
     public class UserController : Controller
     {
         UserRepository ur = new UserRepository();
@@ -78,6 +80,59 @@ namespace TatilSitesi.Controllers
             u.UserPhoneNumber = "";
             ur.Add(u);
             return RedirectToAction("UserLogin", "User");
+        }
+        public IActionResult UserList(int page = 1)
+        {
+            return View(ur.List().ToPagedList(page, 8));
+        }
+        [HttpGet]
+        public IActionResult UserAdd()
+        {
+            return View();
+        }
+        [HttpPost]
+        public IActionResult UserAdd(User c)
+        {
+            c.UserStatu = true;
+            ur.Add(c);
+            return RedirectToAction("UserList");
+        }
+        public IActionResult UserDelete(int id)
+        {
+            ur.Delete(new User { UserId = id });
+            return RedirectToAction("UserList");
+        }
+        public IActionResult GetUser(int id)
+        {
+            var User = ur.Get(id);
+            User c = new User()
+            {
+                UserId = User.UserId,
+                UserRealName = User.UserRealName,
+                UserSurname = User.UserSurname,
+                UserGender = User.UserGender,
+                UserPhoneNumber = User.UserPhoneNumber,
+                UserEmail = User.UserEmail,
+                UserName = User.UserName,
+                UserPassword = User.UserPassword,
+                UserStatu = User.UserStatu
+            };
+            return View(c);
+        }
+        public IActionResult UserUpdate(User c)
+        {
+            var User = ur.Get(c.UserId);
+            User.UserRealName = c.UserRealName;
+            User.UserSurname = c.UserSurname;
+            User.UserGender = c.UserGender;
+            User.UserPhoneNumber = c.UserPhoneNumber;
+            User.UserEmail = c.UserEmail;
+            User.UserName = c.UserName;
+            User.UserPassword = c.UserPassword;
+            User.UserStatu = c.UserStatu;
+            User.UserId = c.UserId;
+            ur.Update(User);
+            return RedirectToAction("UserList");
         }
     }
 }

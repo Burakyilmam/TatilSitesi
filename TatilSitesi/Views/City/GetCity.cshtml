@@ -1,0 +1,24 @@
+﻿@model TatilSitesi.Models.City
+@{
+    ViewData["Title"] = "Şehir Bilgileri Güncelleme Formu";
+    Layout = "~/Views/Shared/LayoutAdmin.cshtml";
+}
+
+<div class="container-fluid">
+    <h2 class="text-center mt-3 mb-3">Şehir Bilgileri Güncelleme Formu</h2>
+    @using (Html.BeginForm("CityUpdate", "City", FormMethod.Post))
+    {
+        @Html.TextBoxFor(x=>x.CityId,new {@style="display:none;"})
+        <center class="mb-2">@Html.TextBoxFor(x=>x.CityName,new {@style="padding: 4px 10px;margin-left:-10px;width:50%;"})</center>
+        <center>
+            @Html.DropDownList("CityStatu", new List<SelectListItem>
+        {
+        new SelectListItem { Value = "True", Text = "Aktif" },
+        new SelectListItem { Value = "False", Text = "Pasif" }
+        }, "-- Seçiniz --", new {@style="padding: 4px 10px;margin-left:-10px;width:50%"})
+        </center>
+        <center class="mt-2">
+            <button style="padding: 4px 10px;margin-left:-10px;" class="btn-success text-center">Güncelle</button>
+        </center>
+    }
+</div>

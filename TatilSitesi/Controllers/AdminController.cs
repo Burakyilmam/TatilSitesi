@@ -4,9 +4,11 @@ using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
 using TatilSitesi.Models;
 using TatilSitesi.Repository;
+using X.PagedList;
 
 namespace TatilSitesi.Controllers
 {
+    [Authorize]
     public class AdminController : Controller
     {
         AdminRepository ar = new AdminRepository();
@@ -73,5 +75,48 @@ namespace TatilSitesi.Controllers
             ar.Add(a);
             return RedirectToAction("AdminLogin", "Admin");
         }
+
+    public IActionResult AdminList(int page = 1)
+    {
+        return View(ar.List().ToPagedList(page, 8));
     }
+    [HttpGet]
+    public IActionResult AdminAdd()
+    {
+        return View();
+    }
+    [HttpPost]
+    public IActionResult AdminAdd(Admin c)
+    {
+        c.AdminStatu = true;
+        ar.Add(c);
+        return RedirectToAction("AdminList");
+    }
+    public IActionResult AdminDelete(int id)
+    {
+        ar.Delete(new Admin { AdminId = id });
+        return RedirectToAction("AdminList");
+    }
+    public IActionResult GetAdmin(int id)
+    {
+        var Admin = ar.Get(id);
+        Admin c = new Admin()
+        {
+            AdminId = Admin.AdminId,
+            AdminName = Admin.AdminName,
+            AdminPassword = Admin.AdminPassword,
+            AdminStatu = Admin.AdminStatu
+        };
+        return View(c);
+    }
+    public IActionResult AdminUpdate(Admin c)
+    {
+        var Admin = ar.Get(c.AdminId);
+        Admin.AdminName = c.AdminName;
+        Admin.AdminPassword = c.AdminPassword;
+        Admin.AdminStatu = c.AdminStatu;
+        ar.Update(Admin);
+        return RedirectToAction("AdminList");
+    }
+}
 }
