@@ -21,6 +21,13 @@
         <a href="/Admin/AdminLogin/">AdminLogin</a>
         <a href="/Home/HomePage/">HomePage</a>
     </header>
+    @using (Html.BeginForm())
+    {
+        <input type="text" name="p" id="" placeholder="">
+        <button>
+            <i class="fa fa-search"></i>
+        </button>
+    }
     <div>
         @RenderBody()
     </div>

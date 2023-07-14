@@ -1,15 +1,15 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using TatilSitesi.Repository;
+﻿    using Microsoft.AspNetCore.Mvc;
+    using TatilSitesi.Repository;
 
-namespace TatilSitesi.ViewComponents
-{
-    public class ListComment : ViewComponent
+    namespace TatilSitesi.ViewComponents
     {
-        public IViewComponentResult Invoke(int id)
+        public class ListComment : ViewComponent
         {
-            CommentRepository cr = new CommentRepository();
-            var commentlist = cr.List("User").Where(x => (x.HotelId == id) && (x.CommentStatu == true));
-            return View(commentlist);
+            public IViewComponentResult Invoke(int id)
+            {
+                CommentRepository cr = new CommentRepository();
+                var commentlist = cr.List("User").Where(x => (x.HotelId == id) && (x.CommentStatu == true));
+                return View(commentlist);
+            }
         }
     }
-}

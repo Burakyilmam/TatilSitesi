@@ -1,0 +1,91 @@
+﻿﻿@using TatilSitesi.Models
+@using X.PagedList.Mvc.Bootstrap4.Core;
+@using X.PagedList.Mvc.Core;
+@using X.PagedList;
+@model IPagedList<Hotel>
+@{
+    ViewData["Title"] = "Oteller";
+    Layout = "~/Views/Shared/LayoutAdmin.cshtml";
+}
+<div class="container-fluid">
+    <h2 class="text-center mt-3 mb-3">Otel Bilgileri</h2>
+    @if (!Model.Any())
+    {
+        <div class="container-fluid">
+            <p class="bg-secondary text-white p-3 text-center" style="border-radius:10px;">
+                Otel verisi bulunamadı.
+            </p>
+        </div>
+    }
+    <table class="table table-hover table-striped table-bordered text-center">
+        <tr>
+            <th class="cid">Id</th>
+            <th class="ctr">Resim</th>
+            <th class="ctr">Ad</th>
+            <th class="cst">Kategori</th>
+            <th class="cst">Şehir</th>
+            <th class="cst">Statü</th>
+            <th class="cup">Güncelle</th>
+            <th class="cup">Detay</th>
+            <th class="cdel">Sil</th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.HotelId</td>
+                <td style="width:250px"><img style="width:100%;height:100%;" src="@item.HotelThumbnailImageUrl" /></td>
+                <td>@item.HotelName</td>
+                <td>
+                    <b>(@item.CategoryId)</b>
+                    <br>
+                    @item.Category.CategoryName
+                </td>
+                <td>
+                    <b>(@item.CityId)</b>
+                    <br>
+                    @item.City.CityName
+                </td>
+                <td>
+
+                    @if (item.HotelStatu == true)
+                    {
+                        <a id="statu" style="padding:2px 12px;border-radius:80% " class="@item.HotelStatu btn-success">
+                        </a>
+                    }
+                    else
+                    {
+                        <a id="statu" style="padding:2px 12px;border-radius:80% " class="@item.HotelStatu btn-danger">
+                        </a>
+                    }
+                </td>
+                <td>
+                    <a class="btn-warning text-white" style="padding:2px 12px;" href="/Hotel/GetUpdate/@item.HotelId">
+                        <i class="fa fa-refresh"></i>
+                    </a>
+                </td>
+                <td>
+                    <a class="btn-primary text-white" style="padding:2px 12px; " href="/Hotel/GetHotel/@item.HotelId">
+                        <i class="fa fa-info"></i>
+                    </a>
+                </td>
+                <td>
+                    <a class="btn-danger" style="padding:2px 12px;" href="/Hotel/HotelDelete/@item.HotelId">
+                        <i class="fa fa-trash"></i>
+                    </a>
+                </td>
+            </tr>
+        }
+    </table>
+    @if (Model.Any())
+    {
+        <div class="row justify-content-center">
+            @Html.PagedListPager((IPagedList)Model,page=>Url.Action("HotelAdminList",new {page}),Bootstrap4PagedListRenderOptions.ClassicPlusFirstAndLast)
+        </div>
+    }
+    <div class="text-center mb-2">
+        <a class="btn-success" style="padding:2px 12px;" href="/Hotel/HotelAdd/">
+            <i class="fa fa-plus"></i>
+        </a>
+    </div>
+</div>

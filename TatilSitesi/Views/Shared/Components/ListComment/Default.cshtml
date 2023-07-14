@@ -1,7 +1,14 @@
 ﻿﻿﻿@using TatilSitesi.Models
 @model IEnumerable<Comment>
 
-
+@if (!Model.Any())
+{
+    <div class="container-fluid">
+        <p class="bg-secondary text-white p-3" style="border-radius:10px;">
+            Hiç yorum yapılmadı.İlk yorumu yapan siz olun.
+        </p>
+    </div>
+}
 @foreach (var y in Model)
 {
     <div class="container-fluid">

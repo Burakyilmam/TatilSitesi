@@ -1,0 +1,52 @@
+﻿@model TatilSitesi.Models.Hotel
+@{
+    ViewData["Title"] = "Otel Bilgileri";
+    Layout = "~/Views/Shared/LayoutAdmin.cshtml";
+}
+<div class="container-fluid">
+    <h2 class="text-center mt-3 mb-3">Otel Bilgileri</h2>
+    <center>
+        @using (Html.BeginForm("HotelUpdate", "Hotel", FormMethod.Post))
+        {
+            @Html.TextBoxFor(x=>x.HotelId,new {@style="display:none;"})
+            <h2 class="text-center col-12">Adı</h2>
+            @Html.TextBoxFor(x=>x.HotelName,new {style="border-radius: 5px;padding: 4px 10px;width:100%", })
+            <h2 class="text-center col-12">Adresi</h2>
+            @Html.TextBoxFor(x=>x.HotelAddres,new {style="border-radius: 5px;padding: 4px 10px;width:100%", })
+            <h2 class="text-center col-12">Yıldızı</h2>
+            @Html.TextBoxFor(x=>x.HotelStar,new {style="border-radius: 5px;padding: 4px 10px;width:100%", })
+            <h2 class="text-center col-12">Puanı</h2>
+            @Html.TextBoxFor(x=>x.HotelRating,new {style="border-radius: 5px;padding: 4px 10px;width:100%", })
+            <h2 class="text-center col-12">Kategorisi</h2>
+            @Html.DropDownListFor(model => model.CategoryId, ((IEnumerable<SelectListItem>)ViewBag.Categories).Select(c => new SelectListItem
+        {
+        Value = c.Value,
+        Text = $"{c.Value} - {c.Text}"
+        }),new {style="border-radius: 5px;padding: 4px 10px;width:100%" })
+            <h2 class="text-center col-12">Şehir</h2>
+            @Html.DropDownListFor(model => model.CityId, ((IEnumerable<SelectListItem>)ViewBag.Cities).Select(co => new SelectListItem
+        {
+        Value = co.Value,
+        Text = $"{co.Value} - {co.Text}",
+        }),new {style="border-radius: 5px;padding: 4px 10px;width:100%"})
+            <h2 class="text-center col-12">Açıklaması</h2>
+            @Html.TextBoxFor(x=>x.HotelDescription,new {style="border-radius: 5px;padding: 4px 10px;width:100%", })
+            <h2 class="text-center col-12">Resim Urlsi</h2>
+            <div class="col-12 text-center mb-3">
+                <img width="100%" src="@Model.HotelThumbnailImageUrl">
+            </div>
+            @Html.TextBoxFor(x=>x.HotelThumbnailImageUrl,new {style="border-radius: 5px;padding: 4px 10px;width:100%", })
+            <h2 class="text-center col-12">İzlenme Sayısı</h2>
+            @Html.TextBoxFor(x=>x.HotelCount,new {style="border-radius: 5px;padding: 4px 10px;width:100%", })
+            <h2 class="text-center col-12">Statüsü</h2>
+        <div class="mb-2">
+                @Html.DropDownList("HotelStatu", new List<SelectListItem>
+            {
+            new SelectListItem { Value = "True", Text = "Aktif" },
+            new SelectListItem { Value = "False", Text = "Pasif" }
+            }, new {style="border-radius: 5px;padding: 4px 10px;width:100%"})     
+        </div>
+         <button style="padding: 4px 10px;" class="btn-success text-center"><i class="fa fa-plus"></i></button>
+        }
+    </center>
+</div>

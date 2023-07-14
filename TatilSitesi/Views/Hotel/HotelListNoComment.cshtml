@@ -23,8 +23,17 @@
     <a class="btn-success" style="padding:10px;margin:5px;text-decoration:none;" href="/Hotel/HotelList3StarNoComment">3 Yıldızlı</a>
     <a class="btn-success" style="padding:10px;margin:5px;text-decoration:none;" href="/Hotel/HotelList2StarNoComment">2 Yıldızlı</a>
     <a class="btn-success" style="padding:10px;margin:5px;text-decoration:none;" href="/Hotel/HotelList1StarNoComment">1 Yıldızlı</a>
+    <a class="btn-success" style="padding:10px;margin:5px;text-decoration:none;" href="/Hotel/HotelListStarNoComment">Yıldız Sayısına Göre</a>
     <a class="btn-success" style="padding:10px;margin:5px;text-decoration:none;" href="/Hotel/HotelListRatingNoComment">Puana Göre</a>
 </div>
+@if (!Model.Any())
+{
+    <div class="container-fluid">
+        <p class="bg-secondary text-white p-3 text-center" style="border-radius:10px;">
+            Aradığınız otel adı bulunamadı.Lütfen varolan bir otel adı giriniz.
+        </p>
+    </div>
+}
 @foreach (var item in Model)
 {
     <div class="mt-4 mb-4 container" style="display:flex;flex-wrap:wrap;border:1px solid black;">
@@ -97,11 +106,6 @@
                     @item.HotelRating
                 </a>
             </div>
-@*             <div style="display:flex" class="col-6 justify-content-end">
-                <a class="btn-info text-center text-white " style="padding:5px 30px">
-                    <i class="fa fa-eye"> @item.HotelCount</i>
-                </a>
-            </div> *@
             <div class="col-12 text-center pt-4 pb-4">
                 <a class="btn-dark" style="padding:10px 20px;text-decoration:none;" href="/Hotel/HotelPageNoComment/@item.HotelId">
                     Oteli İncele
@@ -110,6 +114,9 @@
         </div>
     </div>
 }
-<div style="display:flex" class="col-12 justify-content-center">
-    @Html.PagedListPager((IPagedList)Model,page=>Url.Action("HotelListNoComment",new {page}),Bootstrap4PagedListRenderOptions.ClassicPlusFirstAndLast)
-</div>
+@if (Model.Any())
+{
+    <div style="display:flex" class="col-12 justify-content-center">
+        @Html.PagedListPager((IPagedList)Model,page=>Url.Action("HotelListNoComment",new {page}),Bootstrap4PagedListRenderOptions.ClassicPlusFirstAndLast)
+    </div>
+}
