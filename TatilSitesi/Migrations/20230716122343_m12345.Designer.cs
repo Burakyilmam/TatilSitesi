@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using TatilSitesi.Models;
 
@@ -11,9 +12,10 @@ using TatilSitesi.Models;
 namespace TatilSitesi.Migrations
 {
     [DbContext(typeof(Context))]
-    partial class ContextModelSnapshot : ModelSnapshot
+    [Migration("20230716122343_m12345")]
+    partial class m12345
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -190,25 +192,13 @@ namespace TatilSitesi.Migrations
                     b.Property<bool>("Balcony")
                         .HasColumnType("bit");
 
-                    b.Property<bool>("Basketball")
-                        .HasColumnType("bit");
-
                     b.Property<bool>("Bath")
                         .HasColumnType("bit");
 
                     b.Property<bool>("Beach")
                         .HasColumnType("bit");
 
-                    b.Property<bool>("CarPark")
-                        .HasColumnType("bit");
-
-                    b.Property<bool>("ChildPark")
-                        .HasColumnType("bit");
-
                     b.Property<bool>("Disco")
-                        .HasColumnType("bit");
-
-                    b.Property<bool>("Football")
                         .HasColumnType("bit");
 
                     b.Property<bool>("GameRoom")
@@ -224,9 +214,6 @@ namespace TatilSitesi.Migrations
                         .HasColumnType("bit");
 
                     b.Property<bool>("Internet")
-                        .HasColumnType("bit");
-
-                    b.Property<bool>("LobyBar")
                         .HasColumnType("bit");
 
                     b.Property<bool>("Massage")
@@ -305,9 +292,6 @@ namespace TatilSitesi.Migrations
                     b.Property<int>("HotelId")
                         .HasColumnType("int");
 
-                    b.Property<DateTime>("HotelRoomFinishDate")
-                        .HasColumnType("datetime2");
-
                     b.Property<string>("HotelRoomName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -317,9 +301,6 @@ namespace TatilSitesi.Migrations
 
                     b.Property<double>("HotelRoomPrice")
                         .HasColumnType("float");
-
-                    b.Property<DateTime>("HotelRoomStartDate")
-                        .HasColumnType("datetime2");
 
                     b.Property<bool>("HotelRoomStatu")
                         .HasColumnType("bit");

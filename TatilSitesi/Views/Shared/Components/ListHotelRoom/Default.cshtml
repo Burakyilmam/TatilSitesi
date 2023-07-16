@@ -1,0 +1,65 @@
+﻿@using TatilSitesi.Models
+@model IEnumerable<HotelRoom>
+
+    <div class="container">
+    @foreach (var item in Model)
+    {
+       <div class="col-12 bg-dark text-white text-center">
+            @item.HotelRoomStartDate - @item.HotelRoomFinishDate
+        </div>
+        <div class="col-12">
+            <div class="col-4">
+                @await Component.InvokeAsync("ListRoomImageOne",item.HotelRoomId)
+            </div>
+            <div class="col-8">
+                <div class="12">
+                   @await Component.InvokeAsync("ListHotel",item.HotelId)
+                  <br>
+                  @item.HotelRoomName
+                </div>
+                <div class="col-12">
+                    <b>Kişi Sayısı :</b> @item.HotelRoomPersonNumber
+                </div>
+                <div class="col-12">
+                    <b> Günlük :</b> @item.HotelRoomPrice<br>
+                    <b> Toplam :</b> @((item.HotelRoomPrice * (item.HotelRoomFinishDate - item.HotelRoomStartDate).TotalDays))
+                </div>
+                <form method="post">
+                    @if(item.HotelRoomPersonNumber == 1)
+                    {
+                        <h6>Misafir 1</h6>
+                        <div class="col-12">
+                            <input name="" value="Erkek" type="radio">Erkek
+                            <input name="" value="Kadın" type="radio">Kadın
+                            <input name="" value="Diğer" type="radio">Diğer
+                        </div>
+                        <input name="" type="text" placeholder="AD">
+                        <input name="" type="text" placeholder="SOYAD">
+                        <input type="date" name="">
+                    }
+                    else
+                    {
+                        <h6>Misafir 1</h6>
+                        <div class="col-12">
+                            <input name="" value="Erkek" type="radio">Erkek
+                            <input name="" value="Kadın" type="radio">Kadın
+                            <input name="" value="Diğer" type="radio">Diğer
+                        </div>
+                        <input name="" type="text" placeholder="AD">
+                        <input name="" type="text" placeholder="SOYAD">
+                        <input type="date" name="">
+                        <h6>Misafir 2</h6>
+                        <div class="col-12">
+                            <input name="" value="Erkek" type="radio">Erkek
+                            <input name="" value="Kadın" type="radio">Kadın
+                            <input name="" value="Diğer" type="radio">Diğer
+                        </div>
+                        <input name="" type="text" placeholder="AD">
+                        <input name="" type="text" placeholder="SOYAD">
+                        <input type="date" name="">
+                    }
+                </form>
+            </div>
+        </div>
+    }
+    </div>

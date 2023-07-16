@@ -217,7 +217,7 @@ namespace TatilSitesi.Controllers
             hotel.HotelStar = m.HotelStar;
             hotel.HotelCount = m.HotelCount;
             hotel.HotelStatu=m.HotelStatu;
-            hotel.HotelAddres = m.HotelAddres;
+            hotel.HotelAddress = m.HotelAddress;
             hr.Update(hotel);
             return RedirectToAction("HotelAdminList");
         }
@@ -228,7 +228,7 @@ namespace TatilSitesi.Controllers
             {
                 HotelId = hotel.HotelId,
                 HotelName = hotel.HotelName,
-                HotelAddres = hotel.HotelAddres,
+                HotelAddress = hotel.HotelAddress,
                 HotelCount = hotel.HotelCount,
                 HotelDescription = hotel.HotelDescription,
                 HotelRating = hotel.HotelRating,
@@ -267,7 +267,7 @@ namespace TatilSitesi.Controllers
             {
                 HotelId = hotel.HotelId,
                 HotelName = hotel.HotelName,
-                HotelAddres = hotel.HotelAddres,
+                HotelAddress = hotel.HotelAddress,
                 HotelCount = hotel.HotelCount,
                 HotelDescription = hotel.HotelDescription,
                 HotelRating = hotel.HotelRating,

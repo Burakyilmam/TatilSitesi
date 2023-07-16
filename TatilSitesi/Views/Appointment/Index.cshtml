@@ -1,0 +1,11 @@
+﻿@using TatilSitesi.Models
+@model IEnumerable<HotelRoom>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/LayoutUser.cshtml";
+}
+
+@foreach(var item in Model)
+{
+    @await Component.InvokeAsync("ListHotelRoom",item.HotelRoomId)
+}

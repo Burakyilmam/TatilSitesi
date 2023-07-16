@@ -1,0 +1,11 @@
+﻿@using TatilSitesi.Models
+@model IEnumerable<HotelRoomImage>
+
+@foreach (var item in Model)
+{
+    <div class="col-12">
+        <div style="float:left">
+            <img width="220px" height="180px" style="padding:10px" src="@item.HotelRoomImageUrl">
+        </div>
+    </div>
+}

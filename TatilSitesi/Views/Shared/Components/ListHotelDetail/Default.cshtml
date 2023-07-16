@@ -1,0 +1,495 @@
+﻿﻿@using TatilSitesi.Models
+@model IEnumerable<HotelDetail>
+
+
+    <div class="container-fluid">
+        <div style="background-color:#cac6c694;border:1px solid black;border-radius:5px;" class="row mt-2 mb-2">
+           <div class="col-12 text-center mt-2 mb-2">
+            <h6>Otel Özellikleri</h6>
+           </div>
+        @if (!Model.Any())
+        {
+            <div class="container-fluid">
+            <center>
+                    <p>
+                        Otel hakkında herhangi bir detay bulunmamaktadır.
+                    </p>
+            </center>
+            </div>
+        }
+        @foreach(var item in Model)
+        {       
+        @if(item.Disco == true)
+            {
+                <div class="col-3">
+                <center>
+                        <img src="https://cdn-icons-png.flaticon.com/128/3004/3004616.png" width="40" height="40">
+                        <br />
+                        <h6>Disko</h6>
+                </center>
+                </div>
+            } 
+        else{
+                <div style="display:none" class="col">
+                    <h7>Disko</h7>
+                </div>
+        }
+
+
+            @if (item.CarPark == true)
+            {
+                <div class="col-3">
+                    <center>
+                        <img src="https://cdn-icons-png.flaticon.com/128/75/75905.png" width="40" height="40">
+                        <br />
+                        <h6>Otopark</h6>
+                    </center>
+                </div>
+            }
+            else
+            {
+                <div style="display:none" class="col">
+                    <h7>Otopark</h7>
+                </div>
+            }
+
+            @if (item.GameRoom == true)
+            {
+                <div class="col-3">
+                    <center>
+        <img src="https://cdn-icons-png.flaticon.com/128/9994/9994381.png" width="40" height="40">
+                        <br />
+                        <h6>Oyun Odası</h6>
+                    </center>
+                </div>
+            }
+            else
+            {
+                <div style="display:none" class="col">
+        <h7>Oyun Odası</h7>
+                </div>
+            }
+
+
+            @if (item.ChildPark == true)
+            {
+                <div class="col-3">
+                   <center>
+                        <img src="https://cdn-icons-png.flaticon.com/128/4543/4543726.png" width="40" height="40">
+                        <br />
+                        <h6>Çocuk Parkı</h6>
+                   </center>
+                </div>
+            }
+            else
+            {
+                <div style="display:none" class="col">
+                    <h7>Çocuk Parkı</h7>
+                </div>
+            }
+
+            @if (item.Animation == true)
+            {
+                <div class="col-3"> 
+                    <center>
+                            <img src="https://cdn-icons-png.flaticon.com/128/2410/2410394.png" width="40" height="40">
+                            <br>
+                            <h6>Animasyon</h6>
+                    </center>
+                </div>
+            }
+            else
+            {
+                <div style="display:none" class="col">
+                    <h7>Animasyon</h7>
+                </div>
+            }
+
+            @if (item.LobyBar == true)
+            {
+                <div class="col-3">
+                    <center>
+                        <img src="https://cdn-icons-png.flaticon.com/128/5545/5545285.png" width="40" height="40">
+                        <br>
+                        <h6>Lobi Barı</h6>
+                    </center>
+                </div>
+            }
+            else
+            {
+                <div style="display:none" class="col">
+                    <h7>Lobi Barı</h7>
+                </div>
+            }
+
+
+            @if (item.IndoorRestaurant == true)
+            {
+                <div class="col-3">
+                    <center>
+                        <img src="https://cdn-icons-png.flaticon.com/128/6768/6768241.png" width="40" height="40">
+                        <br>
+                        <h6>Kapalı Restorant</h6>
+                    </center>
+                </div>
+            }
+            else
+            {
+                <div style="display:none" class="col">
+                    <h7>Kapalı Restorant</h7>
+                </div>
+            }
+
+
+            @if (item.OutdoorRestaurant == true)
+            {
+                <div class="col-3">
+                    <center>
+                        <img src="https://static.thenounproject.com/png/3312955-200.png" width="40" height="40">
+                        <br>
+                        <h6>Açık Restorant</h6>
+                    </center>
+                </div>
+            }
+            else
+            {
+                <div style="display:none" class="col">
+                    <h7>Açık Restorant</h7>
+                </div>
+            }
+
+
+            @if (item.Beach == true)
+            {
+                <div class="col-3">
+                    <center>
+                        <img src="https://cdn-icons-png.flaticon.com/128/11062/11062439.png" width="40" height="40">
+                        <br>
+                        <h6>Plaj</h6>
+                    </center>
+                </div>
+            }
+            else
+            {
+                <div style="display:none" class="col">
+                    <h7>Plaj</h7>
+                </div>
+            }
+
+
+            @if (item.Minibar == true)
+            {
+                <div class="col-3">
+                    <center>
+                        <img src="https://cdn-icons-png.flaticon.com/128/3835/3835926.png" width="40" height="40">
+                        <br>
+                        <h6>Minibar</h6>
+                    </center>
+                </div>
+            }   
+            else
+            {
+                <div style="display:none" class="col">
+                    <h7>Minibar</h7>
+                </div>
+            }
+
+
+            @if (item.Shower == true)
+            {
+                <div class="col-3">
+                    <center>
+                        <img src="https://cdn-icons-png.flaticon.com/128/760/760586.png" width="40" height="40">
+                        <br>
+                        <h6>Duş</h6>
+                    </center>
+                </div>
+            }
+            else
+            {
+                <div style="display:none" class="col">
+                    <h7>Duş</h7>
+                </div>
+            }
+
+
+            @if (item.TV == true)
+            {
+                <div class="col-3">
+                    <center>
+                        <img src="https://cdn-icons-png.flaticon.com/128/3159/3159513.png" width="40" height="40">
+                        <br>
+                        <h6>Televizyon</h6>
+                    </center>
+                </div>
+            }
+            else
+            {
+                <div style="display:none" class="col">
+                    <h7>Televizyon</h7>
+                </div>
+            }
+
+            @if (item.Internet == true)
+            {
+                <div class="col-3">
+                    <center>
+                        <img src="https://cdn-icons-png.flaticon.com/128/159/159599.png" width="40" height="40">
+                        <br>
+                        <h6>Internet</h6>
+                    </center>
+                </div>
+            }
+            else
+            {
+                <div style="display:none" class="col">
+                    <h7>İnternet</h7>
+                </div>
+            }
+
+            @if (item.AirConditioning == true)
+            {
+                <div class="col-3">
+                    <center>
+                        <img src="https://cdn-icons-png.flaticon.com/128/900/900233.png" width="40" height="40">
+                        <br>
+                        <h6>Klima</h6>
+                    </center>
+                </div>
+            }
+            else
+            {
+                <div style="display:none" class="col">
+                    <h7>Klima</h7>
+                </div>
+            }
+
+            @if (item.Balcony == true)
+            {
+                <div class="col-3">
+                    <center>
+                        <img src="https://cdn-icons-png.flaticon.com/128/4252/4252347.png" width="40" height="40">
+                        <br>
+                        <h6>Balkon</h6>
+                    </center>
+                </div>
+            }
+            else
+            {
+                <div style="display:none" class="col">
+                    <h7>Balkon</h7>
+                </div>
+            }
+
+            @if (item.Massage == true)
+            {
+                <div class="col-3">
+                    <center>
+                        <img src="https://cdn-icons-png.flaticon.com/128/1986/1986244.png" width="40" height="40">
+                        <br>
+                        <h6>Masaj</h6>
+                    </center>
+                </div>
+            }
+            else
+            {
+                <div style="display:none" class="col">
+                    <h7>Masaj</h7>
+                </div>
+            }
+
+            @if (item.Sauna == true)
+            {
+                <div class="col-3">
+                    <center>
+                        <img src="https://cdn-icons-png.flaticon.com/128/3977/3977048.png" width="40" height="40">
+                        <br>
+                        <h6>Sauna</h6>
+                    </center>
+                </div>
+            }
+            else
+            {
+                <div style="display:none" class="col">
+                    <h7>Sauna</h7>
+                </div>
+            }
+
+            @if (item.Bath == true)
+            {
+                <div class="col-3">
+                    <center>
+                        <img src="https://cdn-icons-png.flaticon.com/128/1751/1751381.png" width="40" height="40">
+                        <br>
+                        <h6>Hamam</h6>
+                    </center>
+                </div>
+            }
+            else
+            {
+                <div style="display:none" class="col">
+                    <h7>Hamam</h7>
+                </div>
+            }
+
+            @if (item.IndoorPool == true)
+            {
+                <div class="col-3">
+                    <center>
+                        <img src="https://cdn-icons-png.flaticon.com/128/6348/6348605.png" width="40" height="40">
+                        <br>
+                        <h6>Kapalı Havuz</h6>
+                    </center>
+                </div>
+            }
+            else
+            {
+                <div style="display:none" class="col">
+                    <h7>Açık Havuz</h7>
+                </div>
+            }
+
+            @if (item.OutdoorPool == true)
+            {
+                <div class="col-3">
+                    <center>
+                        <img src="https://cdn-icons-png.flaticon.com/128/1925/1925949.png" width="40" height="40">
+                        <br>
+                        <h6>Açık Havuz</h6>
+                    </center>
+                </div>
+            }
+            else
+            {
+                <div style="display:none" class="col">
+                    <h7>Kapalı Havuz</h7>
+                </div>
+            }
+
+            @if (item.Sunbed == true)
+            {
+                <div class="col-3">
+                    <center>
+                        <img src="https://cdn-icons-png.flaticon.com/128/4336/4336494.png" width="40" height="40">
+                        <br>
+                        <h6>Şezlong</h6>
+                    </center>
+                </div>
+            }
+            else
+            {
+                <div style="display:none" class="col">
+                    <h7>Şezlong</h7>
+                </div>
+            }
+
+            @if (item.Volleyball == true)
+            {
+                <div class="col-3">
+                    <center>
+                        <img src="https://cdn-icons-png.flaticon.com/128/10107/10107301.png" width="40" height="40">
+                        <br>
+                        <h6>Voleybol Sahası</h6>
+                    </center>
+                </div>
+            }
+            else
+            {
+                <div style="display:none" class="col">
+                    <h7>Voleybol Sahası</h7>
+                </div>
+            }
+
+            
+            @if (item.Basketball == true)
+            {
+                <div class="col-3">
+                    <center>
+                        <img src="https://cdn-icons-png.flaticon.com/128/10/10660.png" width="40" height="40">
+                        <br>
+                        <h6>Basketbol Sahası</h6>
+                    </center>
+                </div>
+            }
+            else
+            {
+                <div style="display:none" class="col">
+                    <h7>Basketbol Sahası</h7>
+                </div>
+            }
+
+
+            @if (item.Football == true)
+            {
+                <div class="col-3">
+                    <center>
+                        <img src="https://cdn-icons-png.flaticon.com/128/10062/10062135.png" width="40" height="40">
+                        <br>
+                        <h6>Futbol Sahası</h6>
+                    </center>
+                </div>
+            }
+            else
+            {
+                <div style="display:none" class="col">
+                    <h7>Futbol Sahası</h7>
+                </div>
+            }
+
+
+            @if (item.TableTennis == true)
+            {
+                <div class="col-3">
+                    <center>
+                        <img src="https://cdn-icons-png.flaticon.com/128/9937/9937519.png" width="40" height="40">
+                        <br>
+                        <h6>Masa Tenisi</h6>
+                    </center>
+                </div>
+            }
+            else
+            {
+                <div style="display:none" class="col">
+                    <h7>Masa Tenisi</h7>
+                </div>
+            }
+
+            @if (item.AquaPark == true)
+            {
+                <div class="col-3">
+                    <center>
+                        <img src="https://cdn-icons-png.flaticon.com/128/5593/5593046.png" width="40" height="40">
+                        <br>
+                        <h6>AquaPark</h6>
+                    </center>
+                </div>
+            }
+            else
+            {
+                <div style="display:none" class="col">
+                    <h7>AquaPark</h7>
+                </div>
+            }
+            @if (item.RoomService == true)
+            {
+                <div class="col-3">
+                    <center>
+                        <img src="https://cdn-icons-png.flaticon.com/128/5099/5099223.png" width="40" height="40">
+                        <br>
+                        <h6>Oda Servisi</h6>
+                    </center>
+                </div>
+            }
+            else
+            {
+                <div style="display:none" class="col">
+                    <h7>Oda Servisi</h7>
+                </div>
+            }
+
+
+        }
+    </div>
+    </div>
+
+ 

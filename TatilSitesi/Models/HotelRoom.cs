@@ -8,6 +8,8 @@ namespace TatilSitesi.Models
         public int HotelRoomId { get; set; }
         public string HotelRoomName { get; set; }
         public double HotelRoomPrice { get; set; }
+        public DateTime HotelRoomStartDate{ get; set; }
+        public DateTime HotelRoomFinishDate { get; set; }
         public int HotelRoomPersonNumber { get; set; }
         public bool HotelRoomStatu { get; set; }
         public List<HotelRoomImage> hotelRoomImages { get; set; }

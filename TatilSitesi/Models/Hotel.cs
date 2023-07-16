@@ -7,7 +7,7 @@ namespace TatilSitesi.Models
         [Key] 
         public int HotelId { get; set; }
         public string HotelName { get; set; }
-        public string HotelAddres { get; set; }
+        public string HotelAddress { get; set; }
         public string HotelDescription { get; set; }
         public string HotelThumbnailImageUrl { get; set; }
         public int HotelCount { get; set; }
