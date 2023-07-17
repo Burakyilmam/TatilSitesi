@@ -14,7 +14,7 @@ namespace TatilSitesi.Controllers
     public class HotelController : Controller
     {
         HotelRepository hr = new HotelRepository();
-        public IActionResult HotelPage(string p ,int id , int page = 1)
+        public IActionResult HotelPage(string p, int id, int page = 1)
         {
             var hotel = hr.Get(id);
 
@@ -30,7 +30,7 @@ namespace TatilSitesi.Controllers
                 return View("~/Views/Hotel/HotelListNoComment.cshtml", hr.List("City", "Category").Where(x => (x.HotelName.Contains((CultureInfo.CurrentCulture.TextInfo.ToTitleCase(p.ToLower()))))).ToPagedList(page, 12));
             }
 
-            return View(hr.List("Category","City").Where(x => x.HotelId == id));
+            return View(hr.List("Category", "City").Where(x => x.HotelId == id));
         }
         [AllowAnonymous]
         public IActionResult HotelPageNoComment(string p, int id, int page = 1)
@@ -51,7 +51,7 @@ namespace TatilSitesi.Controllers
             return View(hr.List("Category", "City").Where(x => x.HotelId == id));
         }
         [AllowAnonymous]
-        public IActionResult HotelListNoComment(string p , int id, int page = 1)
+        public IActionResult HotelListNoComment(string p, int id, int page = 1)
         {
             if (!string.IsNullOrEmpty(p))
             {
@@ -62,7 +62,7 @@ namespace TatilSitesi.Controllers
         }
 
         [AllowAnonymous]
-        public IActionResult HotelListHighPriceNoComment(string p , int id, int page = 1)
+        public IActionResult HotelListHighPriceNoComment(string p, int id, int page = 1)
         {
             if (!string.IsNullOrEmpty(p))
             {
@@ -72,7 +72,7 @@ namespace TatilSitesi.Controllers
             return View(hr.HighPriceHotelList("City", "Category").ToPagedList(page, 4));
         }
         [AllowAnonymous]
-        public IActionResult HotelListLowPriceNoComment(string p , int id, int page = 1)
+        public IActionResult HotelListLowPriceNoComment(string p, int id, int page = 1)
         {
             if (!string.IsNullOrEmpty(p))
             {
@@ -81,7 +81,7 @@ namespace TatilSitesi.Controllers
             return View(hr.LowPriceHotelList("City", "Category").ToPagedList(page, 4));
         }
         [AllowAnonymous]
-        public IActionResult HotelListMostCommentNoComment(string p , int id, int page = 1)
+        public IActionResult HotelListMostCommentNoComment(string p, int id, int page = 1)
         {
             if (!string.IsNullOrEmpty(p))
             {
@@ -90,7 +90,7 @@ namespace TatilSitesi.Controllers
             return View(hr.MostComment("City", "Category").ToPagedList(page, 4));
         }
         [AllowAnonymous]
-        public IActionResult HotelListMostViewNoComment(string p , int id, int page = 1)
+        public IActionResult HotelListMostViewNoComment(string p, int id, int page = 1)
         {
             if (!string.IsNullOrEmpty(p))
             {
@@ -99,7 +99,7 @@ namespace TatilSitesi.Controllers
             return View(hr.List("City", "Category").OrderByDescending(x => x.HotelCount).ToPagedList(page, 4));
         }
         [AllowAnonymous]
-        public IActionResult HotelList5StarNoComment(string p , int id, int page = 1)
+        public IActionResult HotelList5StarNoComment(string p, int id, int page = 1)
         {
             if (!string.IsNullOrEmpty(p))
             {
@@ -108,7 +108,7 @@ namespace TatilSitesi.Controllers
             return View(hr.List("City", "Category").Where(x => x.HotelStar == 5).ToPagedList(page, 4));
         }
         [AllowAnonymous]
-        public IActionResult HotelList4StarNoComment(string p , int id, int page = 1)
+        public IActionResult HotelList4StarNoComment(string p, int id, int page = 1)
         {
             if (!string.IsNullOrEmpty(p))
             {
@@ -117,7 +117,7 @@ namespace TatilSitesi.Controllers
             return View(hr.List("City", "Category").Where(x => x.HotelStar == 4).ToPagedList(page, 4));
         }
         [AllowAnonymous]
-        public IActionResult HotelList3StarNoComment(string p , int id, int page = 1)
+        public IActionResult HotelList3StarNoComment(string p, int id, int page = 1)
         {
             if (!string.IsNullOrEmpty(p))
             {
@@ -126,7 +126,7 @@ namespace TatilSitesi.Controllers
             return View(hr.List("City", "Category").Where(x => x.HotelStar == 3).ToPagedList(page, 4));
         }
         [AllowAnonymous]
-        public IActionResult HotelList2StarNoComment(string p , int id, int page = 1)
+        public IActionResult HotelList2StarNoComment(string p, int id, int page = 1)
         {
             if (!string.IsNullOrEmpty(p))
             {
@@ -135,7 +135,7 @@ namespace TatilSitesi.Controllers
             return View(hr.List("City", "Category").Where(x => x.HotelStar == 2).ToPagedList(page, 4));
         }
         [AllowAnonymous]
-        public IActionResult HotelList1StarNoComment(string p , int id, int page = 1)
+        public IActionResult HotelList1StarNoComment(string p, int id, int page = 1)
         {
             if (!string.IsNullOrEmpty(p))
             {
@@ -150,10 +150,10 @@ namespace TatilSitesi.Controllers
             {
                 return View(hr.List("City", "Category").Where(x => (x.HotelName.Contains((CultureInfo.CurrentCulture.TextInfo.ToTitleCase(p.ToLower()))))).OrderByDescending(x => x.HotelStar).ToPagedList(page, 12));
             }
-            return View(hr.List("City", "Category").OrderByDescending(x=>x.HotelStar).ToPagedList(page, 4));
+            return View(hr.List("City", "Category").OrderByDescending(x => x.HotelStar).ToPagedList(page, 4));
         }
         [AllowAnonymous]
-        public IActionResult HotelListRatingNoComment(string p , int id, int page = 1)
+        public IActionResult HotelListRatingNoComment(string p, int id, int page = 1)
         {
             if (!string.IsNullOrEmpty(p))
             {
@@ -168,11 +168,11 @@ namespace TatilSitesi.Controllers
             {
                 return View(hr.List("City", "Category").Where(x => (x.HotelName.Contains((CultureInfo.CurrentCulture.TextInfo.ToTitleCase(p.ToLower()))))).OrderByDescending(x => x.HotelName).ToPagedList(page, 12));
             }
-            return View(hr.List("City", "Category").Where(x => x.CategoryId == id).OrderByDescending(x=>x.HotelName).ToPagedList(page, 4));
+            return View(hr.List("City", "Category").Where(x => x.CategoryId == id).OrderByDescending(x => x.HotelName).ToPagedList(page, 4));
 
         }
         [AllowAnonymous]
-        public IActionResult HotelCityListNoComment(string p , int id, int page = 1)
+        public IActionResult HotelCityListNoComment(string p, int id, int page = 1)
         {
             if (!string.IsNullOrEmpty(p))
             {
@@ -216,7 +216,7 @@ namespace TatilSitesi.Controllers
             hotel.HotelRating = m.HotelRating;
             hotel.HotelStar = m.HotelStar;
             hotel.HotelCount = m.HotelCount;
-            hotel.HotelStatu=m.HotelStatu;
+            hotel.HotelStatu = m.HotelStatu;
             hotel.HotelAddress = m.HotelAddress;
             hr.Update(hotel);
             return RedirectToAction("HotelAdminList");
@@ -302,4 +302,4 @@ namespace TatilSitesi.Controllers
         }
 
     }
-}
+    }

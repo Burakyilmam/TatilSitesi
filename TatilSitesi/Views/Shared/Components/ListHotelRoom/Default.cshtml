@@ -1,63 +1,118 @@
 ﻿@using TatilSitesi.Models
 @model IEnumerable<HotelRoom>
 
-    <div class="container">
+<div class="container  bg-light">
     @foreach (var item in Model)
     {
-       <div class="col-12 bg-dark text-white text-center">
-            @item.HotelRoomStartDate - @item.HotelRoomFinishDate
+       <div style="display:Flex" class="col-12 pt-2 pb-2">
+            <div class="col-6 text-center">
+                <h6>Giriş Tarihi</h6>
+                <b>@item.HotelRoomStartDate.ToString("dd.MM.yyyy")</b>
+            </div>
+            <div class="col-6 text-center">
+                <h6>Çıkış Tarihi</h6>
+                <b>@item.HotelRoomFinishDate.ToString("dd.MM.yyyy")</b>
+            </div>
         </div>
-        <div class="col-12">
-            <div class="col-4">
+        <div style="display:Flex" class="col-12 text-center">
+            <div class="col-7">
                 @await Component.InvokeAsync("ListRoomImageOne",item.HotelRoomId)
             </div>
-            <div class="col-8">
-                <div class="12">
+            <div class="col-5">
+                <div class="12 pt-2 pb-2">
                    @await Component.InvokeAsync("ListHotel",item.HotelId)
                   <br>
                   @item.HotelRoomName
                 </div>
-                <div class="col-12">
-                    <b>Kişi Sayısı :</b> @item.HotelRoomPersonNumber
+                <div class="col-12 pt-2 pb-2">
+                    <b>Misafir Sayısı :</b> @item.HotelRoomPersonNumber Yetişkin
                 </div>
-                <div class="col-12">
-                    <b> Günlük :</b> @item.HotelRoomPrice<br>
-                    <b> Toplam :</b> @((item.HotelRoomPrice * (item.HotelRoomFinishDate - item.HotelRoomStartDate).TotalDays))
+                <div class="col-12 pt-2 pb-2">
+                    <b> Oda Fiyatı :</b> @item.HotelRoomPrice<br>
+                    <b> Toplam Fiyat :</b> @((item.HotelRoomPrice * (item.HotelRoomFinishDate - item.HotelRoomStartDate).TotalDays))
                 </div>
-                <form method="post">
+                <form method="post" class="mt-2">
                     @if(item.HotelRoomPersonNumber == 1)
                     {
                         <h6>Misafir 1</h6>
                         <div class="col-12">
-                            <input name="" value="Erkek" type="radio">Erkek
-                            <input name="" value="Kadın" type="radio">Kadın
-                            <input name="" value="Diğer" type="radio">Diğer
+                            <input name="" value="Erkek" type="radio"><span>Erkek</span>
+                            <input name="" value="Kadın" type="radio"><span>Kadın</span>
+                            <input name="" value="Diğer" type="radio"><span>Diğer</span>
                         </div>
-                        <input name="" type="text" placeholder="AD">
-                        <input name="" type="text" placeholder="SOYAD">
-                        <input type="date" name="">
+                        <center class="mt-2 mb-2">
+                            <input name="" type="text" placeholder="Adınızı Giriniz." style="width:100%">
+                        </center>
+                        <center class="mt-2 mb-2">
+                            <input name="" type="text" placeholder="Soyadınızı Giriniz." style="width:100%">
+                        </center>
+                        <center class="mt-2 mb-2">
+                            <input name="" type="date" style="width:100%">
+                        </center>
+                        <center class="mt-2 mb-2">
+                            <input name="" type="email" placeholder="Eposta Adresinizi Giriniz." style="width:100%">
+                        </center>
+                        <center class="mt-2 mb-2">
+                            <input name="" type="tel" placeholder="Telefon Numaranızı Giriniz." style="width:100%">
+                        </center>
+                        <center class="mt-2 mb-2">
+                            <input name="" type="number" maxlength="11" placeholder="T.C Kimlik Numaranızı Giriniz." style="width:100%">
+                        </center>
                     }
                     else
                     {
                         <h6>Misafir 1</h6>
                         <div class="col-12">
-                            <input name="" value="Erkek" type="radio">Erkek
-                            <input name="" value="Kadın" type="radio">Kadın
-                            <input name="" value="Diğer" type="radio">Diğer
+                            <input name="" value="Erkek" type="radio"><span>Erkek</span>
+                            <input name="" value="Kadın" type="radio"><span>Kadın</span>
+                            <input name="" value="Diğer" type="radio"><span>Diğer</span>
                         </div>
-                        <input name="" type="text" placeholder="AD">
-                        <input name="" type="text" placeholder="SOYAD">
-                        <input type="date" name="">
+                        <center class="mt-2 mb-2">
+                            <input name="" type="text" placeholder="Adınızı Giriniz." style="width:100%">
+                        </center>
+                        <center class="mt-2 mb-2">
+                            <input name="" type="text" placeholder="Soyadınızı Giriniz." style="width:100%">
+                        </center>
+                        <center class="mt-2 mb-2">
+                            <input name="" type="date" style="width:100%">
+                        </center>
+                        <center class="mt-2 mb-2">
+                            <input name="" type="email" placeholder="Eposta Adresinizi Giriniz." style="width:100%">
+                        </center>
+                        <center class="mt-2 mb-2">
+                            <input name="" type="tel" placeholder="Telefon Numaranızı Giriniz." style="width:100%">
+                        </center>
+                        <center class="mt-2 mb-2">
+                            <input name="" type="number" maxlength="11" placeholder="T.C Kimlik Numaranızı Giriniz." style="width:100%">
+                        </center>
                         <h6>Misafir 2</h6>
                         <div class="col-12">
-                            <input name="" value="Erkek" type="radio">Erkek
-                            <input name="" value="Kadın" type="radio">Kadın
-                            <input name="" value="Diğer" type="radio">Diğer
+                            <input name="" value="Erkek" type="radio"><span>Erkek</span>
+                            <input name="" value="Kadın" type="radio"><span>Kadın</span>
+                            <input name="" value="Diğer" type="radio"><span>Diğer</span>
                         </div>
-                        <input name="" type="text" placeholder="AD">
-                        <input name="" type="text" placeholder="SOYAD">
-                        <input type="date" name="">
+                        <center class="mt-2 mb-2">
+                            <input name="" type="text" placeholder="Adınızı Giriniz." style="width:100%">
+                        </center>
+                        <center class="mt-2 mb-2">
+                            <input name="" type="text" placeholder="Soyadınızı Giriniz." style="width:100%">
+                        </center>
+                        <center class="mt-2 mb-2">
+                            <input name="" type="date" style="width:100%">
+                        </center>
+                        <center class="mt-2 mb-2">
+                            <input name="" type="email" placeholder="Eposta Adresinizi Giriniz." style="width:100%">
+                        </center>
+                        <center class="mt-2 mb-2">
+                            <input name="" type="tel" placeholder="Telefon Numaranızı Giriniz." style="width:100%">
+                        </center>
+                        <center class="mt-2 mb-2">
+                            <input name="" type="number" maxlength="11" placeholder="T.C Kimlik Numaranızı Giriniz." style="width:100%">
+                        </center>
                     }
+                    <div class="col-12 mb-2">
+                        <input type="submit" class="btn-success" style="width:100px;border:none;padding:10px;border-radius:10px" value="Ödeme Yap">
+                    </div>
                 </form>
             </div>
         </div>
