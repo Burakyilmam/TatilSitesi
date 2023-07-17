@@ -1,0 +1,209 @@
+﻿@model TatilSitesi.Models.HotelDetail
+@{
+    ViewData["Title"] = "HotelAdd";
+    Layout = "~/Views/Shared/LayoutAdmin.cshtml";
+}
+<div class="container-fluid">
+    <h2 class="text-center mt-3 mb-3">Otel Detay Ekleme Formu</h2>
+    @using (Html.BeginForm("HotelDetailAdd", "HotelDetail", FormMethod.Post))
+    {
+<center class="mb-2 mt-2">
+    <h3 class="mt-2 mb-2">Oteller</h3>
+    @await Component.InvokeAsync("ListDetailHotel")
+    </center>
+<center class="mb-2 mt-2">
+    <h3 class="mt-2 mb-2">Disko</h3>
+    <select style="width:50%;padding: 4px 10px;outline:none;" name="Disco">
+            <option value="True">Aktif</option>
+            <option value="False">Pasif</option>
+    </select>
+</center>
+<center class="mb-2 mt-2">
+    <h3 class="mt-2 mb-2">Animasyon</h3>
+    <select style="width:50%;padding: 4px 10px;outline:none;" name="Animation">
+        <option value="True">Aktif</option>
+        <option value="False">Pasif</option>
+    </select>
+</center>
+<center class="mb-2 mt-2">
+    <h3 class="mt-2 mb-2">Oyun Odası</h3>
+    <select style="width:50%;padding: 4px 10px;outline:none;" name="GameRoom">
+        <option value="True">Aktif</option>
+        <option value="False">Pasif</option>
+    </select>
+</center>
+<center class="mb-2 mt-2">
+    <h3 class="mt-2 mb-2">Klima</h3>
+    <select style="width:50%;padding: 4px 10px;outline:none;" name="AirConditioning">
+        <option value="True">Aktif</option>
+        <option value="False">Pasif</option>
+    </select>
+</center>
+<center class="mb-2 mt-2">
+    <h3 class="mt-2 mb-2">AquaPark</h3>
+    <select style="width:50%;padding: 4px 10px;outline:none;" name="AquaPark">
+        <option value="True">Aktif</option>
+        <option value="False">Pasif</option>
+    </select>
+</center>
+<center class="mb-2 mt-2">
+    <h3 class="mt-2 mb-2">Balkon</h3>
+    <select style="width:50%;padding: 4px 10px;outline:none;" name="Balcony">
+        <option value="True">Aktif</option>
+        <option value="False">Pasif</option>
+    </select>
+</center>
+<center class="mb-2 mt-2">
+    <h3 class="mt-2 mb-2">Hamam</h3>
+    <select style="width:50%;padding: 4px 10px;outline:none;" name="Bath">
+        <option value="True">Aktif</option>
+        <option value="False">Pasif</option>
+    </select>
+</center>
+<center class="mb-2 mt-2">
+    <h3 class="mt-2 mb-2">Plaj</h3>
+    <select style="width:50%;padding: 4px 10px;outline:none;" name="Beach">
+        <option value="True">Aktif</option>
+        <option value="False">Pasif</option>
+    </select>
+</center>
+<center class="mb-2 mt-2">
+    <h3 class="mt-2 mb-2">Kapalı Havuz</h3>
+    <select style="width:50%;padding: 4px 10px;outline:none;" name="IndoorPool">
+        <option value="True">Aktif</option>
+        <option value="False">Pasif</option>
+    </select>
+</center>
+<center class="mb-2 mt-2">
+    <h3 class="mt-2 mb-2">Kapalı Restorant</h3>
+    <select style="width:50%;padding: 4px 10px;outline:none;" name="IndoorRestaurant">
+        <option value="True">Aktif</option>
+        <option value="False">Pasif</option>
+    </select>
+</center>
+<center class="mb-2 mt-2">
+    <h3 class="mt-2 mb-2">Internet</h3>
+    <select style="width:50%;padding: 4px 10px;outline:none;" name="Internet">
+        <option value="True">Aktif</option>
+        <option value="False">Pasif</option>
+    </select>
+</center>
+<center class="mb-2 mt-2">
+    <h3 class="mt-2 mb-2">Masaj</h3>
+    <select style="width:50%;padding: 4px 10px;outline:none;" name="Massage">
+        <option value="True">Aktif</option>
+        <option value="False">Pasif</option>
+    </select>
+</center>
+<center class="mb-2 mt-2">
+    <h3 class="mt-2 mb-2">Minibar</h3>
+    <select style="width:50%;padding: 4px 10px;outline:none;" name="Minibar">
+        <option value="True">Aktif</option>
+        <option value="False">Pasif</option>
+    </select>
+</center>
+<center class="mb-2 mt-2">
+    <h3 class="mt-2 mb-2">Açık Havuz</h3>
+    <select style="width:50%;padding: 4px 10px;outline:none;" name="OutdoorPool">
+        <option value="True">Aktif</option>
+        <option value="False">Pasif</option>
+    </select>
+</center>
+<center class="mb-2 mt-2">
+    <h3 class="mt-2 mb-2">Açık Restorant</h3>
+    <select style="width:50%;padding: 4px 10px;outline:none;" name="OutdoorRestaurant">
+        <option value="True">Aktif</option>
+        <option value="False">Pasif</option>
+    </select>
+</center>
+<center class="mb-2 mt-2">
+    <h3 class="mt-2 mb-2">Oda Servisi</h3>
+    <select style="width:50%;padding: 4px 10px;outline:none;" name="RoomService">
+        <option value="True">Aktif</option>
+        <option value="False">Pasif</option>
+    </select>
+</center>
+<center class="mb-2 mt-2">
+    <h3 class="mt-2 mb-2">Sauna</h3>
+    <select style="width:50%;padding: 4px 10px;outline:none;" name="Sauna">
+        <option value="True">Aktif</option>
+        <option value="False">Pasif</option>
+    </select>
+</center>
+<center class="mb-2 mt-2">
+    <h3 class="mt-2 mb-2">Duş</h3>
+    <select style="width:50%;padding: 4px 10px;outline:none;" name="Shower">
+        <option value="True">Aktif</option>
+        <option value="False">Pasif</option>
+    </select>
+</center>
+<center class="mb-2 mt-2">
+    <h3 class="mt-2 mb-2">Şezlong</h3>
+    <select style="width:50%;padding: 4px 10px;outline:none;" name="Sunbed">
+        <option value="True">Aktif</option>
+        <option value="False">Pasif</option>
+    </select>
+</center>
+<center class="mb-2 mt-2">
+    <h3 class="mt-2 mb-2">Televizyon</h3>
+    <select style="width:50%;padding: 4px 10px;outline:none;" name="TV">
+        <option value="True">Aktif</option>
+        <option value="False">Pasif</option>
+    </select>
+</center>
+<center class="mb-2 mt-2">
+    <h3 class="mt-2 mb-2">Masa Tenisi</h3>
+    <select style="width:50%;padding: 4px 10px;outline:none;" name="TableTennis">
+        <option value="True">Aktif</option>
+        <option value="False">Pasif</option>
+    </select>
+</center>
+<center class="mb-2 mt-2">
+    <h3 class="mt-2 mb-2">Voleybol</h3>
+    <select style="width:50%;padding: 4px 10px;outline:none;" name="Volleyball">
+        <option value="True">Aktif</option>
+        <option value="False">Pasif</option>
+    </select>
+</center>
+<center class="mb-2 mt-2">
+    <h3 class="mt-2 mb-2">Lobi Barı</h3>
+    <select style="width:50%;padding: 4px 10px;outline:none;" name="LobyBar">
+        <option value="True">Aktif</option>
+        <option value="False">Pasif</option>
+    </select>
+</center>
+<center class="mb-2 mt-2">
+    <h3 class="mt-2 mb-2">Basketbol</h3>
+    <select style="width:50%;padding: 4px 10px;outline:none;" name="Basketball">
+        <option value="True">Aktif</option>
+        <option value="False">Pasif</option>
+    </select>
+</center>
+<center class="mb-2 mt-2">
+    <h3 class="mt-2 mb-2">Otopark</h3>
+    <select style="width:50%;padding: 4px 10px;outline:none;" name="CarPark">
+        <option value="True">Aktif</option>
+        <option value="False">Pasif</option>
+    </select>
+</center>
+<center class="mb-2 mt-2">
+    <h3 class="mt-2 mb-2">Çocuk Parkı</h3>
+    <select style="width:50%;padding: 4px 10px;outline:none;" name="ChildPark">
+        <option value="True">Aktif</option>
+        <option value="False">Pasif</option>
+    </select>
+</center>
+<center class="mb-2 mt-2">
+    <h3 class="mt-2 mb-2">Futbol</h3>
+    <select style="width:50%;padding: 4px 10px;outline:none;" name="Football">
+        <option value="True">Aktif</option>
+        <option value="False">Pasif</option>
+    </select>
+</center>
+        <center class="mb-2">
+            <div>
+                <button style="padding: 4px 10px;" class="btn-success text-center"><i class="fa fa-plus"></i></button>
+            </div>
+        </center>
+    }
+</div>

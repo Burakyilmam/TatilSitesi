@@ -1,0 +1,221 @@
+﻿@model TatilSitesi.Models.HotelDetail
+@{
+    ViewData["Title"] = "Otel Bilgileri";
+    Layout = "~/Views/Shared/LayoutAdmin.cshtml";
+}
+<style>
+    [disabled] {
+        opacity: 1;
+        color: black;
+        border: 1px solid black;
+    }
+</style>
+<div class="container-fluid">
+    <h2 class="text-center mt-3 mb-3">Otel Bilgileri</h2>
+    <center>
+        @using (Html.BeginForm("HotelDetailUpdate", "HotelDetail", FormMethod.Post))
+        {
+            @Html.TextBoxFor(x=>x.HotelId,new {@style="display:none;"})
+
+            <h2 class="text-center col-12">Otel</h2>
+            @Html.DropDownListFor(model => model.HotelId, ((IEnumerable<SelectListItem>)ViewBag.Hotels).Select(c => new SelectListItem
+        {
+        Value = c.Value,
+        Text = $"{c.Value} - {c.Text}"
+        }),new {style="border-radius: 5px;padding: 4px 10px;width:100%"})
+
+
+            <h2 class="text-center col-12">Animasyon</h2>
+            @Html.DropDownList("Animation", new List<SelectListItem>
+        {
+        new SelectListItem { Value = "True", Text = "Aktif" },
+        new SelectListItem { Value = "False", Text = "Pasif" }
+        }, new {style="border-radius: 5px;padding: 4px 10px;width:100%"})
+
+            <h2 class="text-center col-12">Oyun Odası</h2>
+            @Html.DropDownList("GameRoom", new List<SelectListItem>
+        {
+        new SelectListItem { Value = "True", Text = "Aktif" },
+        new SelectListItem { Value = "False", Text = "Pasif" }
+        }, new {style="border-radius: 5px;padding: 4px 10px;width:100%"})   
+
+            <h2 class="text-center col-12">Disko</h2>
+            @Html.DropDownList("Disco", new List<SelectListItem>
+        {
+        new SelectListItem { Value = "True", Text = "Aktif" },
+        new SelectListItem { Value = "False", Text = "Pasif" }
+        }, new {style="border-radius: 5px;padding: 4px 10px;width:100%"})
+
+            <h2 class="text-center col-12">Klima</h2>
+            @if (Model.AirConditioning == true)
+            @Html.DropDownList("AirConditioning", new List<SelectListItem>
+        {
+        new SelectListItem { Value = "True", Text = "Aktif" },
+        new SelectListItem { Value = "False", Text = "Pasif" }
+        }, new {style="border-radius: 5px;padding: 4px 10px;width:100%"})
+
+
+            <h2 class="text-center col-12">AquaPark</h2>
+            @Html.DropDownList("AquaPark", new List<SelectListItem>
+        {
+        new SelectListItem { Value = "True", Text = "Aktif" },
+        new SelectListItem { Value = "False", Text = "Pasif" }
+        }, new {style="border-radius: 5px;padding: 4px 10px;width:100%"})
+
+            <h2 class="text-center col-12">Balkon</h2>
+            @Html.DropDownList("Balcony", new List<SelectListItem>
+        {
+        new SelectListItem { Value = "True", Text = "Aktif" },
+        new SelectListItem { Value = "False", Text = "Pasif" }
+        }, new {style="border-radius: 5px;padding: 4px 10px;width:100%"})
+
+            <h2 class="text-center col-12">Hamam</h2>
+            @Html.DropDownList("Bath", new List<SelectListItem>
+        {
+        new SelectListItem { Value = "True", Text = "Aktif" },
+        new SelectListItem { Value = "False", Text = "Pasif" }
+        }, new {style="border-radius: 5px;padding: 4px 10px;width:100%"})
+
+            <h2 class="text-center col-12">Plaj</h2>
+            @Html.DropDownList("Beach", new List<SelectListItem>
+        {
+        new SelectListItem { Value = "True", Text = "Aktif" },
+        new SelectListItem { Value = "False", Text = "Pasif" }
+        }, new {style="border-radius: 5px;padding: 4px 10px;width:100%"})
+
+            <h2 class="text-center col-12">Kapalı Restorant</h2>
+            @Html.DropDownList("IndoorRestaurant", new List<SelectListItem>
+        {
+        new SelectListItem { Value = "True", Text = "Aktif" },
+        new SelectListItem { Value = "False", Text = "Pasif" }
+        }, new {style="border-radius: 5px;padding: 4px 10px;width:100%"})
+
+            <h2 class="text-center col-12">Açık Restorant</h2>
+            @Html.DropDownList("OutdoorRestaurant", new List<SelectListItem>
+        {
+        new SelectListItem { Value = "True", Text = "Aktif" },
+        new SelectListItem { Value = "False", Text = "Pasif" }
+        }, new {style="border-radius: 5px;padding: 4px 10px;width:100%"})
+            <h2 class="text-center col-12">Kapalı Havuz</h2>
+            @Html.DropDownList("IndoorPool", new List<SelectListItem>
+        {
+        new SelectListItem { Value = "True", Text = "Aktif" },
+        new SelectListItem { Value = "False", Text = "Pasif" }
+        }, new {style="border-radius: 5px;padding: 4px 10px;width:100%"})
+
+            <h2 class="text-center col-12">Açık Havuz</h2>
+            @Html.DropDownList("OutdoorPool", new List<SelectListItem>
+        {
+        new SelectListItem { Value = "True", Text = "Aktif" },
+        new SelectListItem { Value = "False", Text = "Pasif" }
+        }, new {style="border-radius: 5px;padding: 4px 10px;width:100%"})
+
+            <h2 class="text-center col-12">Internet</h2>
+            @Html.DropDownList("Internet", new List<SelectListItem>
+        {
+        new SelectListItem { Value = "True", Text = "Aktif" },
+        new SelectListItem { Value = "False", Text = "Pasif" }
+        }, new {style="border-radius: 5px;padding: 4px 10px;width:100%"})
+
+            <h2 class="text-center col-12">Masaj</h2>
+            @Html.DropDownList("Massage", new List<SelectListItem>
+        {
+        new SelectListItem { Value = "True", Text = "Aktif" },
+        new SelectListItem { Value = "False", Text = "Pasif" }
+        }, new {style="border-radius: 5px;padding: 4px 10px;width:100%"})
+
+            <h2 class="text-center col-12">Minibar</h2>
+            @Html.DropDownList("Minibar", new List<SelectListItem>
+        {
+        new SelectListItem { Value = "True", Text = "Aktif" },
+        new SelectListItem { Value = "False", Text = "Pasif" }
+        }, new {style="border-radius: 5px;padding: 4px 10px;width:100%"})
+
+            <h2 class="text-center col-12">Oda Servisi</h2>
+            @Html.DropDownList("RoomService", new List<SelectListItem>
+        {
+        new SelectListItem { Value = "True", Text = "Aktif" },
+        new SelectListItem { Value = "False", Text = "Pasif" }
+        }, new {style="border-radius: 5px;padding: 4px 10px;width:100%"})
+
+            <h2 class="text-center col-12">Sauna</h2>
+            @Html.DropDownList("Sauna", new List<SelectListItem>
+        {
+        new SelectListItem { Value = "True", Text = "Aktif" },
+        new SelectListItem { Value = "False", Text = "Pasif" }
+        }, new {style="border-radius: 5px;padding: 4px 10px;width:100%"})
+
+            <h2 class="text-center col-12">Duş</h2>
+            @Html.DropDownList("Shower", new List<SelectListItem>
+        {
+        new SelectListItem { Value = "True", Text = "Aktif" },
+        new SelectListItem { Value = "False", Text = "Pasif" }
+        }, new {style="border-radius: 5px;padding: 4px 10px;width:100%"})
+
+            <h2 class="text-center col-12">Şezlong</h2>
+            @Html.DropDownList("Sunbed", new List<SelectListItem>
+        {
+        new SelectListItem { Value = "True", Text = "Aktif" },
+        new SelectListItem { Value = "False", Text = "Pasif" }
+        }, new {style="border-radius: 5px;padding: 4px 10px;width:100%"})
+
+            <h2 class="text-center col-12">Televizyon</h2>
+            @Html.DropDownList("TV", new List<SelectListItem>
+        {
+        new SelectListItem { Value = "True", Text = "Aktif" },
+        new SelectListItem { Value = "False", Text = "Pasif" }
+        }, new {style="border-radius: 5px;padding: 4px 10px;width:100%"})
+
+            <h2 class="text-center col-12">Masa Tenisi</h2>
+            @Html.DropDownList("TableTennis", new List<SelectListItem>
+        {
+        new SelectListItem { Value = "True", Text = "Aktif" },
+        new SelectListItem { Value = "False", Text = "Pasif" }
+        }, new {style="border-radius: 5px;padding: 4px 10px;width:100%"})
+
+            <h2 class="text-center col-12">Voleybol</h2>
+            @Html.DropDownList("Volleyball", new List<SelectListItem>
+        {
+        new SelectListItem { Value = "True", Text = "Aktif" },
+        new SelectListItem { Value = "False", Text = "Pasif" }
+        }, new {style="border-radius: 5px;padding: 4px 10px;width:100%"})
+
+            <h2 class="text-center col-12">Lobi Barı</h2>
+            @Html.DropDownList("LobyBar", new List<SelectListItem>
+        {
+        new SelectListItem { Value = "True", Text = "Aktif" },
+        new SelectListItem { Value = "False", Text = "Pasif" }
+        }, new {style="border-radius: 5px;padding: 4px 10px;width:100%"})
+
+            <h2 class="text-center col-12">Basketbol</h2>
+            @Html.DropDownList("Basketball", new List<SelectListItem>
+        {
+        new SelectListItem { Value = "True", Text = "Aktif" },
+        new SelectListItem { Value = "False", Text = "Pasif" }
+        }, new {style="border-radius: 5px;padding: 4px 10px;width:100%"})
+
+            <h2 class="text-center col-12">Otopark</h2>
+            @Html.DropDownList("CarPark", new List<SelectListItem>
+        {
+        new SelectListItem { Value = "True", Text = "Aktif" },
+        new SelectListItem { Value = "False", Text = "Pasif" }
+        }, new {style="border-radius: 5px;padding: 4px 10px;width:100%"})
+
+            <h2 class="text-center col-12">Çocuk Parkı</h2>
+            @Html.DropDownList("ChildPark", new List<SelectListItem>
+        {
+        new SelectListItem { Value = "True", Text = "Aktif" },
+        new SelectListItem { Value = "False", Text = "Pasif" }
+        }, new {style="border-radius: 5px;padding: 4px 10px;width:100%"})
+
+            <h2 class="text-center col-12">Futbol</h2>
+            @Html.DropDownList("Football", new List<SelectListItem>
+        {
+        new SelectListItem { Value = "True", Text = "Aktif" },
+        new SelectListItem { Value = "False", Text = "Pasif" }
+        }, new {style="border-radius: 5px;padding: 4px 10px;width:100%"})
+
+       <button style="padding: 4px 10px;" class="btn-success text-center"><i class="fa fa-plus"></i></button>
+        }
+    </center>
+</div>

@@ -1,0 +1,299 @@
+﻿@model TatilSitesi.Models.HotelDetail
+@{
+    ViewData["Title"] = "Otel Bilgileri";
+    Layout = "~/Views/Shared/LayoutAdmin.cshtml";
+}
+<style>
+    [disabled] {
+        opacity: 1;
+        color: black;
+        border: 1px solid black;
+    }
+</style>
+<div class="container-fluid">
+    <h2 class="text-center mt-3 mb-3">Otel Bilgileri</h2>
+    <center>
+        @using (Html.BeginForm("HotelDetailUpdate", "HotelDetail", FormMethod.Post))
+        {
+            @Html.TextBoxFor(x=>x.HotelId,new {@style="display:none;"})
+
+            <h2 class="text-center col-12">Otel</h2>
+            @Html.DropDownListFor(model => model.HotelId, ((IEnumerable<SelectListItem>)ViewBag.Hotels).Select(c => new SelectListItem
+        {
+        Value = c.Value,
+        Text = $"{c.Value} - {c.Text}"
+        }),new {style="border-radius: 5px;padding: 4px 10px;width:100%",@readonly = "readonly",@disabled = "disabled" })
+
+
+            <h2 class="text-center col-12">Animasyon</h2>
+            @if (Model.Animation == true)
+            {
+                @Html.TextBox("HotelStatu", "Aktif", new { style = "border-radius: 5px; padding: 4px 10px; width: 100%", @readonly = "readonly" })
+            }
+            else
+            {
+                @Html.TextBox("HotelStatu", "Pasif", new { style = "border-radius: 5px; padding: 4px 10px; width: 100%", @readonly = "readonly" })
+            }
+
+            <h2 class="text-center col-12">Oyun Odası</h2>
+            @if (Model.GameRoom == true)
+            {
+                @Html.TextBox("HotelStatu", "Aktif", new { style = "border-radius: 5px; padding: 4px 10px; width: 100%", @readonly = "readonly" })
+            }
+            else
+            {
+                @Html.TextBox("HotelStatu", "Pasif", new { style = "border-radius: 5px; padding: 4px 10px; width: 100%", @readonly = "readonly" })
+            }
+
+            <h2 class="text-center col-12">Disko</h2>
+            @if (Model.Disco == true)
+            {
+                @Html.TextBox("HotelStatu", "Aktif", new { style = "border-radius: 5px; padding: 4px 10px; width: 100%", @readonly = "readonly" })
+            }
+            else
+            {
+                @Html.TextBox("HotelStatu", "Pasif", new { style = "border-radius: 5px; padding: 4px 10px; width: 100%", @readonly = "readonly" })
+            }
+
+            <h2 class="text-center col-12">Klima</h2>
+            @if (Model.AirConditioning == true)
+            {
+                @Html.TextBox("HotelStatu", "Aktif", new { style = "border-radius: 5px; padding: 4px 10px; width: 100%", @readonly = "readonly" })
+            }
+            else
+            {
+                @Html.TextBox("HotelStatu", "Pasif", new { style = "border-radius: 5px; padding: 4px 10px; width: 100%", @readonly = "readonly" })
+            }
+
+            <h2 class="text-center col-12">AquaPark</h2>
+            @if (Model.AquaPark == true)
+            {
+                @Html.TextBox("HotelStatu", "Aktif", new { style = "border-radius: 5px; padding: 4px 10px; width: 100%", @readonly = "readonly" })
+            }
+            else
+            {
+                @Html.TextBox("HotelStatu", "Pasif", new { style = "border-radius: 5px; padding: 4px 10px; width: 100%", @readonly = "readonly" })
+            }
+
+            <h2 class="text-center col-12">Balkon</h2>
+            @if (Model.Balcony == true)
+            {
+                @Html.TextBox("HotelStatu", "Aktif", new { style = "border-radius: 5px; padding: 4px 10px; width: 100%", @readonly = "readonly" })
+            }
+            else
+            {
+                @Html.TextBox("HotelStatu", "Pasif", new { style = "border-radius: 5px; padding: 4px 10px; width: 100%", @readonly = "readonly" })
+            }
+
+            <h2 class="text-center col-12">Hamam</h2>
+            @if (Model.Bath == true)
+            {
+                @Html.TextBox("HotelStatu", "Aktif", new { style = "border-radius: 5px; padding: 4px 10px; width: 100%", @readonly = "readonly" })
+            }
+            else
+            {
+                @Html.TextBox("HotelStatu", "Pasif", new { style = "border-radius: 5px; padding: 4px 10px; width: 100%", @readonly = "readonly" })
+            }
+
+            <h2 class="text-center col-12">Plaj</h2>
+            @if (Model.Beach == true)
+            {
+                @Html.TextBox("HotelStatu", "Aktif", new { style = "border-radius: 5px; padding: 4px 10px; width: 100%", @readonly = "readonly" })
+            }
+            else
+            {
+                @Html.TextBox("HotelStatu", "Pasif", new { style = "border-radius: 5px; padding: 4px 10px; width: 100%", @readonly = "readonly" })
+            }
+
+            <h2 class="text-center col-12">Kapalı Restorant</h2>
+            @if (Model.IndoorRestaurant == true)
+            {
+                @Html.TextBox("HotelStatu", "Aktif", new { style = "border-radius: 5px; padding: 4px 10px; width: 100%", @readonly = "readonly" })
+            }
+            else
+            {
+                @Html.TextBox("HotelStatu", "Pasif", new { style = "border-radius: 5px; padding: 4px 10px; width: 100%", @readonly = "readonly" })
+            }
+
+            <h2 class="text-center col-12">Açık Restorant</h2>
+            @if (Model.OutdoorRestaurant == true)
+            {
+                @Html.TextBox("HotelStatu", "Aktif", new { style = "border-radius: 5px; padding: 4px 10px; width: 100%", @readonly = "readonly" })
+            }
+            else
+            {
+                @Html.TextBox("HotelStatu", "Pasif", new { style = "border-radius: 5px; padding: 4px 10px; width: 100%", @readonly = "readonly" })
+            }
+            <h2 class="text-center col-12">Kapalı Havuz</h2>
+            @if (Model.OutdoorPool == true)
+            {
+                @Html.TextBox("HotelStatu", "Aktif", new { style = "border-radius: 5px; padding: 4px 10px; width: 100%", @readonly = "readonly" })
+            }
+            else
+            {
+                @Html.TextBox("HotelStatu", "Pasif", new { style = "border-radius: 5px; padding: 4px 10px; width: 100%", @readonly = "readonly" })
+            }
+
+            <h2 class="text-center col-12">Açık Havuz</h2>
+            @if (Model.IndoorPool == true)
+            {
+                @Html.TextBox("HotelStatu", "Aktif", new { style = "border-radius: 5px; padding: 4px 10px; width: 100%", @readonly = "readonly" })
+            }
+            else
+            {
+                @Html.TextBox("HotelStatu", "Pasif", new { style = "border-radius: 5px; padding: 4px 10px; width: 100%", @readonly = "readonly" })
+            }
+
+            <h2 class="text-center col-12">Internet</h2>
+            @if (Model.Internet == true)
+            {
+                @Html.TextBox("HotelStatu", "Aktif", new { style = "border-radius: 5px; padding: 4px 10px; width: 100%", @readonly = "readonly" })
+            }
+            else
+            {
+                @Html.TextBox("HotelStatu", "Pasif", new { style = "border-radius: 5px; padding: 4px 10px; width: 100%", @readonly = "readonly" })
+            }
+
+            <h2 class="text-center col-12">Masaj</h2>
+            @if (Model.Massage == true)
+            {
+                @Html.TextBox("HotelStatu", "Aktif", new { style = "border-radius: 5px; padding: 4px 10px; width: 100%", @readonly = "readonly" })
+            }
+            else
+            {
+                @Html.TextBox("HotelStatu", "Pasif", new { style = "border-radius: 5px; padding: 4px 10px; width: 100%", @readonly = "readonly" })
+            }
+
+            <h2 class="text-center col-12">Minibar</h2>
+            @if (Model.Minibar == true)
+            {
+                @Html.TextBox("HotelStatu", "Aktif", new { style = "border-radius: 5px; padding: 4px 10px; width: 100%", @readonly = "readonly" })
+            }
+            else
+            {
+                @Html.TextBox("HotelStatu", "Pasif", new { style = "border-radius: 5px; padding: 4px 10px; width: 100%", @readonly = "readonly" })
+            }
+
+            <h2 class="text-center col-12">Oda Servisi</h2>
+            @if (Model.RoomService == true)
+            {
+                @Html.TextBox("HotelStatu", "Aktif", new { style = "border-radius: 5px; padding: 4px 10px; width: 100%", @readonly = "readonly" })
+            }
+            else
+            {
+                @Html.TextBox("HotelStatu", "Pasif", new { style = "border-radius: 5px; padding: 4px 10px; width: 100%", @readonly = "readonly" })
+            }
+
+            <h2 class="text-center col-12">Sauna</h2>
+            @if (Model.Sauna == true)
+            {
+                @Html.TextBox("HotelStatu", "Aktif", new { style = "border-radius: 5px; padding: 4px 10px; width: 100%", @readonly = "readonly" })
+            }
+            else
+            {
+                @Html.TextBox("HotelStatu", "Pasif", new { style = "border-radius: 5px; padding: 4px 10px; width: 100%", @readonly = "readonly" })
+            }
+
+            <h2 class="text-center col-12">Duş</h2>
+            @if (Model.Shower == true)
+            {
+                @Html.TextBox("HotelStatu", "Aktif", new { style = "border-radius: 5px; padding: 4px 10px; width: 100%", @readonly = "readonly" })
+            }
+            else
+            {
+                @Html.TextBox("HotelStatu", "Pasif", new { style = "border-radius: 5px; padding: 4px 10px; width: 100%", @readonly = "readonly" })
+            }
+
+            <h2 class="text-center col-12">Şezlong</h2>
+            @if (Model.Sunbed == true)
+            {
+                @Html.TextBox("HotelStatu", "Aktif", new { style = "border-radius: 5px; padding: 4px 10px; width: 100%", @readonly = "readonly" })
+            }
+            else
+            {
+                @Html.TextBox("HotelStatu", "Pasif", new { style = "border-radius: 5px; padding: 4px 10px; width: 100%", @readonly = "readonly" })
+            }
+
+            <h2 class="text-center col-12">Televizyon</h2>
+            @if (Model.TV == true)
+            {
+                @Html.TextBox("HotelStatu", "Aktif", new { style = "border-radius: 5px; padding: 4px 10px; width: 100%", @readonly = "readonly" })
+            }
+            else
+            {
+                @Html.TextBox("HotelStatu", "Pasif", new { style = "border-radius: 5px; padding: 4px 10px; width: 100%", @readonly = "readonly" })
+            }
+
+            <h2 class="text-center col-12">Masa Tenisi</h2>
+            @if (Model.TableTennis == true)
+            {
+                @Html.TextBox("HotelStatu", "Aktif", new { style = "border-radius: 5px; padding: 4px 10px; width: 100%", @readonly = "readonly" })
+            }
+            else
+            {
+                @Html.TextBox("HotelStatu", "Pasif", new { style = "border-radius: 5px; padding: 4px 10px; width: 100%", @readonly = "readonly" })
+            }
+
+            <h2 class="text-center col-12">Voleybol</h2>
+            @if (Model.Volleyball == true)
+            {
+                @Html.TextBox("HotelStatu", "Aktif", new { style = "border-radius: 5px; padding: 4px 10px; width: 100%", @readonly = "readonly" })
+            }
+            else
+            {
+                @Html.TextBox("HotelStatu", "Pasif", new { style = "border-radius: 5px; padding: 4px 10px; width: 100%", @readonly = "readonly" })
+            }
+
+            <h2 class="text-center col-12">Lobi Barı</h2>
+            @if (Model.LobyBar == true)
+            {
+                @Html.TextBox("HotelStatu", "Aktif", new { style = "border-radius: 5px; padding: 4px 10px; width: 100%", @readonly = "readonly" })
+            }
+            else
+            {
+                @Html.TextBox("HotelStatu", "Pasif", new { style = "border-radius: 5px; padding: 4px 10px; width: 100%", @readonly = "readonly" })
+            }
+
+            <h2 class="text-center col-12">Basketbol</h2>
+            @if (Model.Basketball == true)
+            {
+                @Html.TextBox("HotelStatu", "Aktif", new { style = "border-radius: 5px; padding: 4px 10px; width: 100%", @readonly = "readonly" })
+            }
+            else
+            {
+                @Html.TextBox("HotelStatu", "Pasif", new { style = "border-radius: 5px; padding: 4px 10px; width: 100%", @readonly = "readonly" })
+            }
+
+            <h2 class="text-center col-12">Otopark</h2>
+            @if (Model.CarPark == true)
+            {
+                @Html.TextBox("HotelStatu", "Aktif", new { style = "border-radius: 5px; padding: 4px 10px; width: 100%", @readonly = "readonly" })
+            }
+            else
+            {
+                @Html.TextBox("HotelStatu", "Pasif", new { style = "border-radius: 5px; padding: 4px 10px; width: 100%", @readonly = "readonly" })
+            }
+
+            <h2 class="text-center col-12">Çocuk Parkı</h2>
+            @if (Model.ChildPark == true)
+            {
+                @Html.TextBox("HotelStatu", "Aktif", new { style = "border-radius: 5px; padding: 4px 10px; width: 100%", @readonly = "readonly" })
+            }
+            else
+            {
+                @Html.TextBox("HotelStatu", "Pasif", new { style = "border-radius: 5px; padding: 4px 10px; width: 100%", @readonly = "readonly" })
+            }
+
+            <h2 class="text-center col-12">Futbol</h2>
+            @if (Model.Football == true)
+            {
+                @Html.TextBox("HotelStatu", "Aktif", new { style = "border-radius: 5px; padding: 4px 10px; width: 100%", @readonly = "readonly" })
+            }
+            else
+            {
+                @Html.TextBox("HotelStatu", "Pasif", new { style = "border-radius: 5px; padding: 4px 10px; width: 100%", @readonly = "readonly" })
+            }
+
+        }
+    </center>
+</div>
