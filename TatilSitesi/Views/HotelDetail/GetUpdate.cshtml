@@ -15,7 +15,7 @@
     <center>
         @using (Html.BeginForm("HotelDetailUpdate", "HotelDetail", FormMethod.Post))
         {
-            @Html.TextBoxFor(x=>x.HotelId,new {@style="display:none;"})
+            @Html.TextBoxFor(x=>x.HotelDetailId,new {@style="display:none;"})
 
             <h2 class="text-center col-12">Otel</h2>
             @Html.DropDownListFor(model => model.HotelId, ((IEnumerable<SelectListItem>)ViewBag.Hotels).Select(c => new SelectListItem

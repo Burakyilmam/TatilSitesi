@@ -4,55 +4,76 @@
 @using X.PagedList.Mvc.Core;
 @model PagedList<City>
 @{
-    ViewData["Title"] = "Kategoriler";
+    ViewData["Title"] = "Şehirler";
     Layout = "~/Views/Shared/LayoutAdmin.cshtml";
 }
 <div class="container-fluid">
-    <h2 class="text-center mt-3 mb-3">Kategori Bilgileri</h2>
-    <table class="table table-hover table-striped table-bordered text-center">
-        <tr>
-            <th class="cid">Id</th>
-            <th class="ctr">Ad</th>
-            <th class="cst">Statü</th>
-            <th class="cup">Güncelle</th>
-            <th class="cdel">Sil</th>
-        </tr>
-
-        @foreach (var item in Model)
-        {
+    <h2 class="text-center mt-3 mb-3">Şehir Bilgileri</h2>
+    @using (Html.BeginForm())
+    {
+        <input type="text" name="p" id="" placeholder="">
+        <button>
+            <i class="fa fa-search"></i>
+        </button>
+    }
+    @if (!Model.Any())
+    {
+        <div class="container-fluid">
+            <p class="bg-secondary text-white p-3 text-center" style="border-radius:10px;">
+                Şehir verisi bulunamadı.
+            </p>
+        </div>
+    }
+        @if (Model.Any())
+    {
+        <table class="table table-hover table-striped table-bordered text-center">
             <tr>
-                <td>@item.CityId</td>
-                <td>@item.CityName</td>
-                <td>
-
-                    @if (item.CityStatu == true)
-                    {
-                        <a id="statu" style="padding:2px 12px;border-radius:80%" class="@item.CityStatu btn-success">
-                        </a>
-                    }
-                    else
-                    {
-                        <a id="statu" style="padding:2px 12px;border-radius:80%" class="@item.CityStatu btn-danger">
-                        </a>
-                    }
-                </td>
-                <td>
-                    <a class="btn-warning text-white" style="border-radius: 5px;padding: 4px 10px;" href="/City/GetCity/@item.CityId">
-                        <i class="fa fa-refresh"></i>
-                    </a>
-                </td>
-                <td>
-                    <a class="btn-primary" style="border-radius: 5px;padding: 4px 10px;" href="/City/CityDelete/@item.CityId">
-                        <i class="fa fa-trash"></i>
-                    </a>
-                </td>
+                <th class="cid">Id</th>
+                <th class="ctr">Ad</th>
+                <th class="cst">Statü</th>
+                <th class="cup">Güncelle</th>
+                <th class="cdel">Sil</th>
             </tr>
-        }
-    </table>
-    <div class="row justify-content-center">
-        @Html.PagedListPager((IPagedList)Model,page=>Url.Action("CityList",new {page}),Bootstrap4PagedListRenderOptions.ClassicPlusFirstAndLast)
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.CityId</td>
+                    <td>@item.CityName</td>
+                    <td>
+
+                        @if (item.CityStatu == true)
+                        {
+                            <a id="statu" style="padding:2px 12px;border-radius:80%" class="@item.CityStatu btn-success">
+                            </a>
+                        }
+                        else
+                        {
+                            <a id="statu" style="padding:2px 12px;border-radius:80%" class="@item.CityStatu btn-danger">
+                            </a>
+                        }
+                    </td>
+                    <td>
+                        <a class="btn-warning text-white" style="border-radius: 5px;padding: 4px 10px;" href="/City/GetCity/@item.CityId">
+                            <i class="fa fa-refresh"></i>
+                        </a>
+                    </td>
+                    <td>
+                        <a class="btn-primary" style="border-radius: 5px;padding: 4px 10px;" href="/City/CityDelete/@item.CityId">
+                            <i class="fa fa-trash"></i>
+                        </a>
+                    </td>
+                </tr>
+            }
+        </table>
+    }
+        @if (Model.Any())
+    {
+        <div class="row justify-content-center">
+            @Html.PagedListPager((IPagedList)Model,page=>Url.Action("CityList",new {page}),Bootstrap4PagedListRenderOptions.ClassicPlusFirstAndLast)
+        </div>
+        <div class="text-center">
+            @await Html.PartialAsync("~/Views/City/CityAdd.cshtml")
     </div>
-    <div class="text-center">
-        @await Html.PartialAsync("~/Views/City/CityAdd.cshtml")
-    </div>
+    }
 </div>

@@ -9,6 +9,21 @@
 }
 <div class="container-fluid">
     <h2 class="text-center mt-3 mb-3">Kategori Bilgileri</h2>
+    @using (Html.BeginForm())
+    {
+        <input type="text" name="p" id="" placeholder="">
+        <button>
+            <i class="fa fa-search"></i>
+        </button>
+    }
+    @if (!Model.Any())
+    {
+        <div class="container-fluid">
+            <p class="bg-secondary text-white p-3 text-center" style="border-radius:10px;">
+                Kategori verisi bulunamadı.
+            </p>
+        </div>
+    } @if (Model.Any()){
     <table class="table table-hover table-striped table-bordered text-center">
         <tr>
             <th class="cid">Id</th>
@@ -49,10 +64,13 @@
             </tr>
         }
     </table>
+    }
+    @if (Model.Any()){
     <div class="row justify-content-center">
         @Html.PagedListPager((IPagedList)Model,page=>Url.Action("CategoryList",new {page}),Bootstrap4PagedListRenderOptions.ClassicPlusFirstAndLast)
     </div>
     <div class="text-center">
         @await Html.PartialAsync("~/Views/Category/CategoryAdd.cshtml")
-    </div>
+        </div>
+    }
 </div>

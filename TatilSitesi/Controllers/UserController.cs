@@ -1,6 +1,7 @@
 ﻿    using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System.Globalization;
 using System.Security.Claims;
 using TatilSitesi.Models;
 using TatilSitesi.Repository;
@@ -81,9 +82,13 @@ namespace TatilSitesi.Controllers
             ur.Add(u);
             return RedirectToAction("UserLogin", "User");
         }
-        public IActionResult UserList(int page = 1)
+        public IActionResult UserList(string p, int page = 1)
         {
-            return View(ur.List().ToPagedList(page, 8));
+            if (!string.IsNullOrEmpty(p))
+            {
+                return View("~/Views/User/UserList.cshtml", ur.List().Where(x => (x.UserName.Contains((CultureInfo.CurrentCulture.TextInfo.ToTitleCase(p.ToLower()))))).ToPagedList(page, 12));
+            }
+            return View(ur.List().ToPagedList(page, 12));
         }
         [HttpGet]
         public IActionResult UserAdd()

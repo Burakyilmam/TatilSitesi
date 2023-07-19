@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System.Globalization;
 using TatilSitesi.Models;
 using TatilSitesi.Repository;
 using X.PagedList;
@@ -10,9 +11,13 @@ namespace TatilSitesi.Controllers
     public class CityController : Controller
     { 
         CityRepository cr = new CityRepository();
-        public IActionResult CityList(int page = 1)
+        public IActionResult CityList(string p, int page = 1)
         {
-            return View(cr.List().ToPagedList(page, 8));
+            if (!string.IsNullOrEmpty(p))
+            {
+                return View("~/Views/City/CityList.cshtml", cr.List().Where(x => (x.CityName.Contains((CultureInfo.CurrentCulture.TextInfo.ToTitleCase(p.ToLower()))))).ToPagedList(page, 12));
+            }
+            return View(cr.List().ToPagedList(page, 12));
         }
         [HttpGet]
         public IActionResult CityAdd()

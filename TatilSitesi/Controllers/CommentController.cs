@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using System.Globalization;
 using System.Security.Claims;
 using TatilSitesi.Models;
 using TatilSitesi.Repository;
@@ -33,9 +34,13 @@ namespace TatilSitesi.Controllers
             return RedirectToAction("HotelPage", "Hotel", new { @id = c.HotelId });
 
         }
-        public IActionResult CommentList(int page = 1)
+        public IActionResult CommentList(string p, int page = 1)
         {
-            return View(cr.List("User","Hotel").ToPagedList(page, 8));
+            if (!string.IsNullOrEmpty(p))
+            {
+                return View("~/Views/Comment/CommentList.cshtml", cr.List("User", "Hotel").Where(x => (x.CommentText.Contains((CultureInfo.CurrentCulture.TextInfo.ToTitleCase(p.ToLower()))))).ToPagedList(page, 12));
+            }
+            return View(cr.List("User","Hotel").ToPagedList(page, 12));
         }
         public IActionResult AdminCommentAdd()
         {

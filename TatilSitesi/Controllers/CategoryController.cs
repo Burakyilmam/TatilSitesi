@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System.Globalization;
 using TatilSitesi.Models;
 using TatilSitesi.Repository;
 using X.PagedList;
@@ -10,9 +11,13 @@ namespace TatilSitesi.Controllers
     public class CategoryController : Controller
     {
         CategoryRepository cr = new CategoryRepository();
-        public IActionResult CategoryList(int page = 1)
+        public IActionResult CategoryList(string p, int page = 1)
         {
-            return View(cr.List().ToPagedList(page, 8));
+            if (!string.IsNullOrEmpty(p))
+            {
+                return View("~/Views/Category/CategoryList.cshtml", cr.List().Where(x => (x.CategoryName.Contains((CultureInfo.CurrentCulture.TextInfo.ToTitleCase(p.ToLower()))))).ToPagedList(page, 12));
+            }
+            return View(cr.List().ToPagedList(page, 12));
         }
         [HttpGet]
         public IActionResult CategoryAdd()

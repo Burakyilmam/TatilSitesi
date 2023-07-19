@@ -3,11 +3,12 @@
     ViewData["Title"] = "Kullanıcı Kayıt";
     Layout = "~/Views/Shared/LayoutUser.cshtml";
 }
-<h1>Kullanıcı Kayıt Formu</h1>
-<form method="post">
-    <input type="text" name="UserName" placeholder="Yönetici Adını Giriniz." />
-    <input type="password" name="UserPassword" placeholder="Yönetici Parolasını Giriniz." />
-    <input type="submit" value="Ekle" />
-</form>
-
-
+<div style="margin-top:180px" class="container-fluid">
+    <div style="text-center;display;flex;justify-content:center;flex-wrap:wrap" class="row">
+        <h1 class="mt-4 mb-4 col-12 text-center">Kullanıcı Kayıt Formu</h1>
+        <form class="text-center" action="#" method="post">
+            <input class="mt-2 mb-2" style="width:100%" type="text" placeholder="Kullanıcı Adı" name="UserName" />
+            <input class="mt-2 mb-2" style="width:100%" type="password" placeholder="Parola" name="UserPassword" />
+            <input style="padding:6px;border-radius:5px;" class="btn-success text-center mt-2" type="submit" value="Ekle" />
+        </form>
+    </div>

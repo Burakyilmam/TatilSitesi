@@ -2,14 +2,14 @@
 @model IEnumerable<Comment>
 @{
     ViewData["Title"] = "Yorum Ekleme Formu";
-    Layout = "~/Views/Shared/LayoutAdmin.cshtml";
+    Layout = "";
 }
 
 <div class="container-fluid">
     @using (Html.BeginForm("AdminCommentAdd", "Comment", FormMethod.Post))
     {
         <center class="mb-2">
-            <textarea required type="text" style="width:50%;padding: 4px 10px;outline:none;" name="CommentText" placeholder="Filmin Adını Türkçe Giriniz."></textarea>
+            <textarea required type="text" style="width:50%;padding: 4px 10px;outline:none;" name="CommentText" placeholder="Yorumunuzu Giriniz."></textarea>
         </center>
         <center class="mb-2">
             @await Component.InvokeAsync("ListCommentUser")

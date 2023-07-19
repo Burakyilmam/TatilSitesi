@@ -34,6 +34,41 @@ namespace TatilSitesi.Controllers
             hr.Delete(new HotelDetail { HotelDetailId = id });
             return RedirectToAction("HotelDetailList");
         }
+        public IActionResult HotelDetailUpdate(HotelDetail h)
+        { 
+            var hoteldetail = hr.Get(h.HotelDetailId);
+            hoteldetail.HotelDetailId = h.HotelDetailId;
+            hoteldetail.Animation = h.Animation;
+            hoteldetail.GameRoom = h.GameRoom;
+            hoteldetail.Disco = h.Disco;
+            hoteldetail.HotelId = h.HotelId;
+            hoteldetail.AirConditioning = h.AirConditioning;
+            hoteldetail.AquaPark = h.AquaPark;
+            hoteldetail.Balcony = h.Balcony;
+            hoteldetail.Bath = h.Bath;
+            hoteldetail.Beach = h.Beach;
+            hoteldetail.IndoorPool = h.IndoorPool;
+            hoteldetail.IndoorRestaurant = h.IndoorRestaurant;
+            hoteldetail.Internet = h.Internet;
+            hoteldetail.Massage = h.Massage;
+            hoteldetail.Minibar = h.Minibar;
+            hoteldetail.OutdoorPool = h.OutdoorPool;
+            hoteldetail.OutdoorRestaurant = h.OutdoorRestaurant;
+            hoteldetail.RoomService = h.RoomService;
+            hoteldetail.Sauna = h.Sauna;
+            hoteldetail.Shower = h.Shower;
+            hoteldetail.Sunbed = h.Sunbed;
+            hoteldetail.TV = h.TV;
+            hoteldetail.TableTennis = h.TableTennis;
+            hoteldetail.Volleyball = h.Volleyball;
+            hoteldetail.LobyBar = h.LobyBar;
+            hoteldetail.Basketball = h.Basketball;
+            hoteldetail.CarPark = h.CarPark;
+            hoteldetail.ChildPark = h.ChildPark;
+            hoteldetail.Football = h.Football;
+            hr.Update(hoteldetail);
+            return RedirectToAction("HotelDetailList");
+            }
         public IActionResult GetDetail(int id)
         {
             var hoteldetail = hr.Get(id);
@@ -82,44 +117,6 @@ namespace TatilSitesi.Controllers
             ViewBag.Hotels = hotelItems;
 
             return View(m);
-        }
-        public IActionResult HotelDetailUpdate(HotelDetail m)
-        {
-            var hoteldetails = hr.Get(m.HotelDetailId);
-
-            hoteldetails.Disco = m.Disco;
-            hoteldetails.CarPark = m.CarPark;
-            hoteldetails.TV = m.TV;   
-            hoteldetails.Sauna = m.Sauna;
-            hoteldetails.Shower = m.Shower;
-            hoteldetails.Sunbed = m.Sunbed;
-            hoteldetails.TableTennis = m.TableTennis;
-            hoteldetails.Beach = m.Beach;
-            hoteldetails.OutdoorRestaurant = m.OutdoorRestaurant;
-            hoteldetails.IndoorRestaurant = m.IndoorRestaurant;
-            hoteldetails.AirConditioning = m.AirConditioning;
-            hoteldetails.Animation = m.Animation;
-            hoteldetails.AquaPark = m.AquaPark;
-            hoteldetails.Balcony = m.Balcony;
-            hoteldetails.Basketball = m.Basketball;
-            hoteldetails.Bath = m.Bath;
-            hoteldetails.Beach = m.Beach;
-            hoteldetails.ChildPark = m.ChildPark;
-            hoteldetails.Football = m.Football;
-            hoteldetails.GameRoom = m.GameRoom;
-            hoteldetails.HotelDetailId = m.HotelDetailId;
-            hoteldetails.HotelId = m.HotelId;
-            hoteldetails.IndoorPool = m.IndoorPool;
-            hoteldetails.OutdoorPool = m.OutdoorPool;
-            hoteldetails.Minibar = m.Minibar;
-            hoteldetails.Massage = m.Massage;
-            hoteldetails.Internet = m.Internet;
-            hoteldetails.LobyBar = m.LobyBar;
-            hoteldetails.Volleyball = m.Volleyball;
-            hoteldetails.TableTennis = m.TableTennis;
-
-            hr.Update(hoteldetails);
-            return RedirectToAction("HotelDetailList");
         }
 
         public IActionResult GetUpdate(int id)

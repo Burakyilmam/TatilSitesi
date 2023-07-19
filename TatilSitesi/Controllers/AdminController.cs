@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System.Globalization;
 using System.Security.Claims;
 using TatilSitesi.Models;
 using TatilSitesi.Repository;
@@ -56,7 +57,7 @@ namespace TatilSitesi.Controllers
             }
             return View();
         }
-        public async Task<IActionResult> AdminLogoutAsync()
+        public async Task<IActionResult> AdminLogout()
         {
             await HttpContext.SignOutAsync();
             return RedirectToAction("AdminLogin", "Admin");
@@ -76,9 +77,13 @@ namespace TatilSitesi.Controllers
             return RedirectToAction("AdminLogin", "Admin");
         }
 
-    public IActionResult AdminList(int page = 1)
-    {
-        return View(ar.List().ToPagedList(page, 8));
+    public IActionResult AdminList(string p, int page = 1)
+        {
+            if (!string.IsNullOrEmpty(p))
+            {
+                return View("~/Views/Admin/AdminList.cshtml", ar.List().Where(x => (x.AdminName.Contains((CultureInfo.CurrentCulture.TextInfo.ToTitleCase(p.ToLower()))))).ToPagedList(page, 12));
+            }
+            return View(ar.List().ToPagedList(page, 12));
     }
     [HttpGet]
     public IActionResult AdminAdd()

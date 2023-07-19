@@ -183,9 +183,13 @@ namespace TatilSitesi.Controllers
         }
 
         // <------------------ Admin Tarafı ------------------>
-        public IActionResult HotelAdminList(int page = 1)
+        public IActionResult HotelAdminList(string p ,int page = 1)
         {
-            return View(hr.List("Category", "City").ToPagedList(page, 10));
+            if (!string.IsNullOrEmpty(p))
+            {
+                return View("~/Views/Hotel/HotelAdminList.cshtml", hr.List("Category","City").Where(x => (x.HotelName.Contains((CultureInfo.CurrentCulture.TextInfo.ToTitleCase(p.ToLower()))))).ToPagedList(page, 12));
+            }
+            return View(hr.List("Category", "City").ToPagedList(page, 12));
         }
         [HttpGet]
         public IActionResult HotelAdd()
@@ -296,8 +300,6 @@ namespace TatilSitesi.Controllers
 
             ViewBag.Categories = categoryItems;
             ViewBag.Cities = cityItems;
-            var cityName = cities.FirstOrDefault(c => c.CityId == hotel.CityId)?.CityName;
-            ViewBag.CityName = cityName;
             return View(m);
         }
 
