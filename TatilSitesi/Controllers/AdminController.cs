@@ -72,9 +72,19 @@ namespace TatilSitesi.Controllers
         [HttpPost]
         public IActionResult AdminRegister(Admin a)
         {
-            a.AdminStatu = true;
-            ar.Add(a);
-            return RedirectToAction("AdminLogin", "Admin");
+            bool isAdminExists = ar.CheckAdminName(a.AdminName);
+
+            if (!isAdminExists)
+            {
+                a.AdminStatu = true;
+                ar.Add(a);
+                return RedirectToAction("AdminLogin", "Admin");
+            }
+            else
+            {
+                ViewData["ErrorMessage"] = "Yönetici Adı Kullanılmaktadır.";
+                return View();
+            }
         }
 
     public IActionResult AdminList(string p, int page = 1)
@@ -91,11 +101,21 @@ namespace TatilSitesi.Controllers
         return View();
     }
     [HttpPost]
-    public IActionResult AdminAdd(Admin c)
+    public IActionResult AdminAdd(Admin a)
     {
-        c.AdminStatu = true;
-        ar.Add(c);
-        return RedirectToAction("AdminList");
+            bool isAdminExists = ar.CheckAdminName(a.AdminName);
+
+            if (!isAdminExists)
+            {
+                a.AdminStatu = true;
+                ar.Add(a);
+                return RedirectToAction("AdminList");
+            }
+            else
+            {
+                ViewData["ErrorMessage"] = "Yönetici Adı Kullanılmaktadır. Lütfen Aşağıdaki Alana Veritabanında Bulunmayan Bir Yönetici Adı Yazınız.";
+                return View();
+            }
     }
     public IActionResult AdminDelete(int id)
     {

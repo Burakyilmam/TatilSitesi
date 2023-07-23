@@ -73,14 +73,24 @@ namespace TatilSitesi.Controllers
         [HttpPost]
         public IActionResult UserRegister(User u)
         {
-            u.UserStatu = true;
-            u.UserEmail = "";
-            u.UserGender = "";
-            u.UserSurname = "";
-            u.UserRealName = "";
-            u.UserPhoneNumber = "";
-            ur.Add(u);
-            return RedirectToAction("UserLogin", "User");
+            bool isUserExists = ur.CheckUserName(u.UserName);
+
+            if (!isUserExists)
+            {
+                u.UserStatu = true;
+                u.UserEmail = "";
+                u.UserGender = "";
+                u.UserSurname = "";
+                u.UserRealName = "";
+                u.UserPhoneNumber = "";
+                ur.Add(u);
+                return RedirectToAction("UserLogin", "User");
+            }
+            else
+            {
+                ViewData["ErrorMessage"] = "Kullanıcı Adı Kullanılmaktadır. Lütfen Aşağıdaki Alana Veritabanında Bulunmayan Bir Kullanıcı Adı Yazınız.";
+                return View();
+            }
         }
         public IActionResult UserList(string p, int page = 1)
         {
@@ -96,11 +106,21 @@ namespace TatilSitesi.Controllers
             return View();
         }
         [HttpPost]
-        public IActionResult UserAdd(User c)
+        public IActionResult UserAdd(User u)
         {
-            c.UserStatu = true;
-            ur.Add(c);
-            return RedirectToAction("UserList");
+            bool isUserExists = ur.CheckUserName(u.UserName);
+
+            if (!isUserExists)
+            {
+                u.UserStatu = true;
+                ur.Add(u);
+                return RedirectToAction("UserList");
+            }
+            else
+            {
+                ViewData["ErrorMessage"] = "Kullanıcı Adı Kullanılmaktadır.";
+                return View();
+            }
         }
         public IActionResult UserDelete(int id)
         {

@@ -27,9 +27,19 @@ namespace TatilSitesi.Controllers
         [HttpPost]
         public IActionResult CategoryAdd(Category c)
         {
-            c.CategoryStatu = true;
-            cr.Add(c);
-            return RedirectToAction("CategoryList");
+            bool isCategoryExists = cr.CheckCategoryName(c.CategoryName);
+
+            if (!isCategoryExists)
+            {
+                c.CategoryStatu = true;
+                cr.Add(c);
+                return RedirectToAction("CategoryList");
+            }
+            else
+            {
+                ViewData["ErrorMessage"] = "Kategori Adı Kullanılmaktadır. Lütfen Aşağıdaki Alana Veritabanında Bulunmayan Bir Kategori Adı Yazınız.";
+                return View();
+            }
         }
         public IActionResult CategoryDelete(int id)
         {

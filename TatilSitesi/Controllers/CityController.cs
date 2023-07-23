@@ -27,9 +27,19 @@ namespace TatilSitesi.Controllers
         [HttpPost]
         public IActionResult CityAdd(City c)
         {
-            c.CityStatu = true;
-            cr.Add(c);
-            return RedirectToAction("CityList");
+            bool isCityExists = cr.CheckCityName(c.CityName);
+
+            if (!isCityExists)
+            {
+                c.CityStatu = true;
+                cr.Add(c);
+                return RedirectToAction("CityList");
+            }
+            else
+            {
+                ViewData["ErrorMessage"] = "Şehir Adı Kullanılmaktadır. Lütfen Aşağıdaki Alana Veritabanında Bulunmayan Bir Şehir Adı Yazınız.";
+                return View();
+            }
         }
         public IActionResult CityDelete(int id)
         {

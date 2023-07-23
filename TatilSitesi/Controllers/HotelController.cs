@@ -199,10 +199,20 @@ namespace TatilSitesi.Controllers
         [HttpPost]
         public IActionResult HotelAdd(Hotel m)
         {
-            m.HotelCount = 0;
-            m.HotelStatu = true;
-            hr.Add(m);
-            return RedirectToAction("HotelAdminList");
+            bool isHotelExists = hr.CheckHotelName(m.HotelName);
+
+            if (!isHotelExists)
+            {
+                m.HotelCount = 0;
+                m.HotelStatu = true;
+                hr.Add(m);
+                return RedirectToAction("HotelAdminList");
+            }
+            else
+            {
+                ViewData["ErrorMessage"] = "Otel Adı Kullanılmaktadır. Lütfen Aşağıdaki Alana Veritabanında Bulunmayan Bir Otel Adı Yazınız.";
+                return View();
+            }
         }
         public IActionResult HotelDelete(int id)
         {

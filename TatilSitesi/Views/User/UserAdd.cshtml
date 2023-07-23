@@ -7,36 +7,50 @@
 
 <div class="container-fluid">
     <h2 class="text-center mt-3 mb-3">Kategori Ekleme Paneli</h2>
-    @using (Html.BeginForm("UserAdd", "User", FormMethod.Post))
-    {
-        <center class="mb-2">
-            <input required type="text" style="padding: 4px 10px;margin-left:-10px;width:50%;" name="UserRealName" placeholder="Adınızı Giriniz.">
-            </center>
-        <center class="mb-2">
-            <input required type="text" style="padding: 4px 10px;margin-left:-10px;width:50%;" name="UserSurName" placeholder="Soyadınızı Giriniz.">
-        </center>
-        <center class="mb-2">
-            <select style="padding: 4px 10px;margin-left:-10px;width:50%;" name="UserGender">
-                <option value="Erkek">Erkek</option>
-                <option value="Kadın">Kadın</option>
-                <option value="Diğer">Diğer</option>
-            </select>
-        </center>
-        <center class="mb-2">
-            <input required type="tel" style="padding: 4px 10px;margin-left:-10px;width:50%;" maxlength="11" name="UserPhoneNumber" placeholder="Telefon Numaranızı Giriniz.">
-        </center>
-        <center class="mb-2">
-            <input required type="email" style="padding: 4px 10px;margin-left:-10px;width:50%;" name="UserEmail" placeholder="Email Adresinizi Giriniz.">
-        </center>
-        <center class="mb-2">
-            <input required type="text" style="padding: 4px 10px;margin-left:-10px;width:50%;" name="UserName" placeholder="Kullanıcı Adınızı Giriniz.">
-        </center>
-        <center class="mb-2">
-            <input required type="password" style="padding: 4px 10px;margin-left:-10px;width:50%;" name="UserPassword" placeholder="Parolanızı Giriniz.">
-        </center>
-        <center>
-            <button style="padding: 4px 10px;" class="btn-success text-center"><i class="fa fa-plus"></i></button>
-        </center>
-    }
+    <div style="display:flex" class="col-12 text-center justify-content-center">
+        <div class="col-7">
+            @if (!string.IsNullOrEmpty(ViewData["ErrorMessage"] as string))
+            {
+                <div class="alert alert-danger">
+                    @ViewData["ErrorMessage"]
+                </div>
+            }
+        </div>
+    </div>
+    <div style="display:flex" class="col-12 text-center justify-content-center">
+        <div class="col-7">
+            @using (Html.BeginForm("UserAdd", "User", FormMethod.Post))
+            {
+                <center class="mb-2">
+                    <input required type="text" style="padding: 4px 10px;margin-left:-10px;width:100%;" name="UserRealName" placeholder="Adınızı Giriniz.">
+                </center>
+                <center class="mb-2">
+                    <input required type="text" style="padding: 4px 10px;margin-left:-10px;width:100%;" name="UserSurName" placeholder="Soyadınızı Giriniz.">
+                </center>
+                <center class="mb-2">
+                    <select style="padding: 4px 10px;margin-left:-10px;width:100%;" name="UserGender">
+                        <option value="Erkek">Erkek</option>
+                        <option value="Kadın">Kadın</option>
+                        <option value="Diğer">Diğer</option>
+                    </select>
+                </center>
+                <center class="mb-2">
+                    <input required type="tel" style="padding: 4px 10px;margin-left:-10px;width:100%;" maxlength="11" name="UserPhoneNumber" placeholder="Telefon Numaranızı Giriniz.">
+                </center>
+                <center class="mb-2">
+                    <input required type="email" style="padding: 4px 10px;margin-left:-10px;width:100%;" name="UserEmail" placeholder="Email Adresinizi Giriniz.">
+                </center>
+                <center class="mb-2">
+                    <input required type="text" style="padding: 4px 10px;margin-left:-10px;width:100%;" name="UserName" placeholder="Kullanıcı Adınızı Giriniz.">
+                </center>
+                <center class="mb-2">
+                    <input required type="password" style="padding: 4px 10px;margin-left:-10px;width:100%;" name="UserPassword" placeholder="Parolanızı Giriniz.">
+                </center>
+                <center>
+                    <button style="padding: 4px 10px;" class="btn-success text-center"><i class="fa fa-plus"></i></button>
+                </center>
+            }
+        </div>
+    </div>
 </div>
 

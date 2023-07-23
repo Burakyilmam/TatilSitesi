@@ -115,9 +115,9 @@
     </div>
 }
 
-@if (!Model.Any())
+@if (Model.Any())
 {
 <div style="display:flex" class="col-12 justify-content-center">
-    @Html.PagedListPager((IPagedList)Model,page=>Url.Action("HotelList4StarNoComment",new {page}),Bootstrap4PagedListRenderOptions.ClassicPlusFirstAndLast)
+        @Html.PagedListPager((IPagedList)Model,page=>Url.Action("HotelListStarNoComment",new {page}),Bootstrap4PagedListRenderOptions.ClassicPlusFirstAndLast)
 </div>
 }

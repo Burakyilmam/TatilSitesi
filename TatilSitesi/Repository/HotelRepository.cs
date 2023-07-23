@@ -18,5 +18,10 @@ namespace TatilSitesi.Repository
         {
             return c.Set<Hotel>().Include(u).Include(b).OrderByDescending(x => x.Comments.Count).ToList();
         }
+        public bool CheckHotelName(string HotelName)
+        {
+            var value = c.Hotels.Any(a => a.HotelName == HotelName);
+            return value;
+        }
     }
 }
