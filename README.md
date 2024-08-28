@@ -70,6 +70,9 @@
     <b>Seçilen Otel ile Aynı Şehirde veya Aynı Kategoride Bulunan Otelleri Getirme : </b> Kullanıcının seçtiği otelin bulunduğu şehirde veya aynı kategorideki diğer otelleri göstermeye yarayan bir özelliktir.
   </li>
   <li>
+    <b>Responsive Tasarım : </b> Farklı ekran boyutlarına uyumlu olacak şekilde tasarlanmıştır.
+  </li>
+  <li>
     <b>Minimalist Kullanıcı Arayüzü : </b> Kullanıcı deneyimini ön planda tutan, sade ve modern bir kullanıcı arayüzü.
   </li>
 </ul>
