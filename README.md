@@ -1,6 +1,6 @@
 <h1>Tatil Sitesi</h2>
 <p>.NET Core 6 kullanılarak geliştirilmiş,  Entity Framework ile veri erişiminin ve yönetiminin sağlandığı, responsive ve MVC (Model-View-Controller) mimarisi üzerine kurulmuş tatil sitesidir.</p>
-<b>Demo görüntüleri</b> --> https://www.youtube.com/playlist?list=PLPCWhaSK59AilU15APQJ6n4qoSMaMpShi
+<b>Demo görüntüleri</b> --> <a href="https://www.youtube.com/playlist?list=PLPCWhaSK59AilU15APQJ6n4qoSMaMpShi">Youtube videosuna gitmek için tıklayınız.</a>
 <h3>Kullanılan Teknolojiler</h3>
 <ul>
   <li>
